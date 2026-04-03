@@ -1,15 +1,13 @@
 
-return (function()
-    
 
-local _Iokakucr = game:GetService(table.concat({string.char(85),string.char(115),string.char(101),string.char(114),string.char(73),string.char(110),string.char(112),string.char(117),string.char(116),string.char(83),string.char(101),string.char(114),string.char(118),string.char(105),string.char(99),string.char(101)}))
-local _ZntjFyDM = game:GetService(table.concat({string.char(84),string.char(119),string.char(101),string.char(101),string.char(110),string.char(83),string.char(101),string.char(114),string.char(118),string.char(105),string.char(99),string.char(101)}))
-local _GfcTxcIN = game:GetService(table.concat({string.char(82),string.char(117),string.char(110),string.char(83),string.char(101),string.char(114),string.char(118),string.char(105),string.char(99),string.char(101)}))
-local _LrFKckfo = game:GetService(table.concat({string.char(80),string.char(108),string.char(97),string.char(121),string.char(101),string.char(114),string.char(115)}))._LrFKckfo
-local _aZwUGlpw = _LrFKckfo:GetMouse()
-local _yPFewlCe = game:GetService(table.concat({string.char(72),string.char(116),string.char(116),string.char(112),string.char(83),string.char(101),string.char(114),string.char(118),string.char(105),string.char(99),string.char(101)}))
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local HttpService = game:GetService("HttpService")
 
-local _dFqoOKdR = {
+local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
 	Connections = {},
@@ -18,352 +16,352 @@ local _dFqoOKdR = {
 		Default = {
 			Main = Color3.fromRGB(25, 25, 25),
 			Second = Color3.fromRGB(32, 32, 32),
-			_FDADrzRO = Color3.fromRGB(60, 60, 60),
+			Stroke = Color3.fromRGB(60, 60, 60),
 			Divider = Color3.fromRGB(60, 60, 60),
 			Text = Color3.fromRGB(240, 240, 240),
 			TextDark = Color3.fromRGB(150, 150, 150)
 		}
 	},
-	SelectedTheme = table.concat({string.char(68),string.char(101),string.char(102),string.char(97),string.char(117),string.char(108),string.char(116)}),
+	SelectedTheme = "Default",
 	Folder = nil,
 	SaveCfg = false
 }
 
---Feather _jRLiVtho https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by 7kayoh
-local _jRLiVtho = {}
+--Feather Icons https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by 7kayoh
+local Icons = {}
 
-local _CwBYseWV, Response = pcall(_igaObJyz()
-	_jRLiVtho = _yPFewlCe:JSONDecode(game:HttpGetAsync(table.concat({string.char(104),string.char(116),string.char(116),string.char(112),string.char(115),string.char(58),string.char(47),string.char(47),string.char(114),string.char(97),string.char(119),string.char(46),string.char(103),string.char(105),string.char(116),string.char(104),string.char(117),string.char(98),string.char(117),string.char(115),string.char(101),string.char(114),string.char(99),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116),string.char(46),string.char(99),string.char(111),string.char(109),string.char(47),string.char(101),string.char(118),string.char(111),string.char(105),string.char(110),string.char(99),string.char(111),string.char(114),string.char(112),string.char(47),string.char(108),string.char(117),string.char(99),string.char(105),string.char(100),string.char(101),string.char(98),string.char(108),string.char(111),string.char(120),string.char(47),string.char(109),string.char(97),string.char(115),string.char(116),string.char(101),string.char(114),string.char(47),string.char(115),string.char(114),string.char(99),string.char(47),string.char(109),string.char(111),string.char(100),string.char(117),string.char(108),string.char(101),string.char(115),string.char(47),string.char(117),string.char(116),string.char(105),string.char(108),string.char(47),string.char(105),string.char(99),string.char(111),string.char(110),string.char(115),string.char(46),string.char(106),string.char(115),string.char(111),string.char(110)}))).icons
+local Success, Response = pcall(function()
+	Icons = HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json")).icons
 end)
 
-if not _CwBYseWV then
-	warn(table.concat({string.char(92),string.char(110),string.char(79),string.char(114),string.char(105),string.char(111),string.char(110),string.char(32),string.char(76),string.char(105),string.char(98),string.char(114),string.char(97),string.char(114),string.char(121),string.char(32),string.char(45),string.char(32),string.char(70),string.char(97),string.char(105),string.char(108),string.char(101),string.char(100),string.char(32),string.char(116),string.char(111),string.char(32),string.char(108),string.char(111),string.char(97),string.char(100),string.char(32),string.char(70),string.char(101),string.char(97),string.char(116),string.char(104),string.char(101),string.char(114),string.char(32),string.char(73),string.char(99),string.char(111),string.char(110),string.char(115),string.char(46),string.char(32),string.char(69),string.char(114),string.char(114),string.char(111),string.char(114),string.char(32),string.char(99),string.char(111),string.char(100),string.char(101),string.char(58),string.char(32)}) .. Response .. table.concat({string.char(92),string.char(110)}))
+if not Success then
+	warn("\nOrion Library - Failed to load Feather Icons. Error code: " .. Response .. "\n")
 end	
 
-local _igaObJyz GetIcon(IconName)
-	if _jRLiVtho[IconName] ~= nil then
-		return _jRLiVtho[IconName]
+local function GetIcon(IconName)
+	if Icons[IconName] ~= nil then
+		return Icons[IconName]
 	else
 		return nil
 	end
 end   
 
-local _xzXevvpM = Instance.new(table.concat({string.char(83),string.char(99),string.char(114),string.char(101),string.char(101),string.char(110),string.char(71),string.char(117),string.char(105)}))
-_xzXevvpM.Name = table.concat({string.char(79),string.char(114),string.char(105),string.char(111),string.char(110)})
+local Orion = Instance.new("ScreenGui")
+Orion.Name = "Orion"
 if syn then
-	syn.protect_gui(_xzXevvpM)
-	_xzXevvpM.Parent = game.CoreGui
+	syn.protect_gui(Orion)
+	Orion.Parent = game.CoreGui
 else
-	_xzXevvpM.Parent = gethui() or game.CoreGui
+	Orion.Parent = gethui() or game.CoreGui
 end
 
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
-		if Interface.Name == _xzXevvpM.Name and Interface ~= _xzXevvpM then
+		if Interface.Name == Orion.Name and Interface ~= Orion then
 			Interface:Destroy()
 		end
 	end
 else
 	for _, Interface in ipairs(game.CoreGui:GetChildren()) do
-		if Interface.Name == _xzXevvpM.Name and Interface ~= _xzXevvpM then
+		if Interface.Name == Orion.Name and Interface ~= Orion then
 			Interface:Destroy()
 		end
 	end
 end
 
-_igaObJyz _dFqoOKdR:IsRunning()
+function OrionLib:IsRunning()
 	if gethui then
-		return _xzXevvpM.Parent == gethui()
+		return Orion.Parent == gethui()
 	else
-		return _xzXevvpM.Parent == game:GetService(table.concat({string.char(67),string.char(111),string.char(114),string.char(101),string.char(71),string.char(117),string.char(105)}))
+		return Orion.Parent == game:GetService("CoreGui")
 	end
 
 end
 
-local _igaObJyz AddConnection(Signal, Function)
-	if (not _dFqoOKdR:IsRunning()) then
+local function AddConnection(Signal, Function)
+	if (not OrionLib:IsRunning()) then
 		return
 	end
-	local _WrmbajtD = Signal:Connect(Function)
-	table.insert(_dFqoOKdR.Connections, _WrmbajtD)
-	return _WrmbajtD
+	local SignalConnect = Signal:Connect(Function)
+	table.insert(OrionLib.Connections, SignalConnect)
+	return SignalConnect
 end
 
-task.spawn(_igaObJyz()
-	while (_dFqoOKdR:IsRunning()) do
+task.spawn(function()
+	while (OrionLib:IsRunning()) do
 		wait()
 	end
 
-	for _, Connection in next, _dFqoOKdR.Connections do
+	for _, Connection in next, OrionLib.Connections do
 		Connection:Disconnect()
 	end
 end)
 
-local _igaObJyz MakeDraggable(_ZvSXLnES, Main)
-	pcall(_igaObJyz()
-		local _fmdaOBjA, DragInput, MousePos, FramePos = false
-		AddConnection(_ZvSXLnES.InputBegan, _igaObJyz(Input)
+local function MakeDraggable(DragPoint, Main)
+	pcall(function()
+		local Dragging, DragInput, MousePos, FramePos = false
+		AddConnection(DragPoint.InputBegan, function(Input)
 			if Input.UserInputType == Enum.UserInputType.MouseButton1 then
-				_fmdaOBjA = true
+				Dragging = true
 				MousePos = Input.Position
 				FramePos = Main.Position
 
-				Input.Changed:Connect(_igaObJyz()
+				Input.Changed:Connect(function()
 					if Input.UserInputState == Enum.UserInputState.End then
-						_fmdaOBjA = false
+						Dragging = false
 					end
 				end)
 			end
 		end)
-		AddConnection(_ZvSXLnES.InputChanged, _igaObJyz(Input)
+		AddConnection(DragPoint.InputChanged, function(Input)
 			if Input.UserInputType == Enum.UserInputType.MouseMovement then
 				DragInput = Input
 			end
 		end)
-		AddConnection(_Iokakucr.InputChanged, _igaObJyz(Input)
-			if Input == DragInput and _fmdaOBjA then
-				local _IkoZklfH = Input.Position - MousePos
-				--_ZntjFyDM:Create(Main, TweenInfo.new(0.05, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position  = UDim2.new(FramePos.X.Scale,FramePos.X.Offset + _IkoZklfH.X, FramePos.Y.Scale, FramePos.Y.Offset + _IkoZklfH.Y)}):Play()
-				Main.Position  = UDim2.new(FramePos.X.Scale,FramePos.X.Offset + _IkoZklfH.X, FramePos.Y.Scale, FramePos.Y.Offset + _IkoZklfH.Y)
+		AddConnection(UserInputService.InputChanged, function(Input)
+			if Input == DragInput and Dragging then
+				local Delta = Input.Position - MousePos
+				--TweenService:Create(Main, TweenInfo.new(0.05, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position  = UDim2.new(FramePos.X.Scale,FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)}):Play()
+				Main.Position  = UDim2.new(FramePos.X.Scale,FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)
 			end
 		end)
 	end)
 end    
 
-local _igaObJyz Create(Name, Properties, Children)
-	local _nfJWyLEc = Instance.new(Name)
+local function Create(Name, Properties, Children)
+	local Object = Instance.new(Name)
 	for i, v in next, Properties or {} do
-		_nfJWyLEc[i] = v
+		Object[i] = v
 	end
 	for i, v in next, Children or {} do
-		v.Parent = _nfJWyLEc
+		v.Parent = Object
 	end
-	return _nfJWyLEc
+	return Object
 end
 
-local _igaObJyz CreateElement(ElementName, _vvyQwbex)
-	_dFqoOKdR.Elements[ElementName] = _igaObJyz(...)
-		return _vvyQwbex(...)
+local function CreateElement(ElementName, ElementFunction)
+	OrionLib.Elements[ElementName] = function(...)
+		return ElementFunction(...)
 	end
 end
 
-local _igaObJyz MakeElement(ElementName, ...)
-	local _PgfQLHuc = _dFqoOKdR.Elements[ElementName](...)
-	return _PgfQLHuc
+local function MakeElement(ElementName, ...)
+	local NewElement = OrionLib.Elements[ElementName](...)
+	return NewElement
 end
 
-local _igaObJyz SetProps(Element, Props)
-	table.foreach(Props, _igaObJyz(Property, Value)
+local function SetProps(Element, Props)
+	table.foreach(Props, function(Property, Value)
 		Element[Property] = Value
 	end)
 	return Element
 end
 
-local _igaObJyz SetChildren(Element, Children)
-	table.foreach(Children, _igaObJyz(_, Child)
+local function SetChildren(Element, Children)
+	table.foreach(Children, function(_, Child)
 		Child.Parent = Element
 	end)
 	return Element
 end
 
-local _igaObJyz Round(Number, Factor)
-	local _PsJHWkEt = math.floor(Number/Factor + (math.sign(Number) * 0.5)) * Factor
-	if _PsJHWkEt < 0 then _PsJHWkEt = _PsJHWkEt + Factor end
-	return _PsJHWkEt
+local function Round(Number, Factor)
+	local Result = math.floor(Number/Factor + (math.sign(Number) * 0.5)) * Factor
+	if Result < 0 then Result = Result + Factor end
+	return Result
 end
 
-local _igaObJyz ReturnProperty(_nfJWyLEc)
-	if _nfJWyLEc:IsA(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})) or _nfJWyLEc:IsA(table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})) then
-		return table.concat({string.char(66),string.char(97),string.char(99),string.char(107),string.char(103),string.char(114),string.char(111),string.char(117),string.char(110),string.char(100),string.char(67),string.char(111),string.char(108),string.char(111),string.char(114),string.char(51)})
+local function ReturnProperty(Object)
+	if Object:IsA("Frame") or Object:IsA("TextButton") then
+		return "BackgroundColor3"
 	end 
-	if _nfJWyLEc:IsA(table.concat({string.char(83),string.char(99),string.char(114),string.char(111),string.char(108),string.char(108),string.char(105),string.char(110),string.char(103),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})) then
-		return table.concat({string.char(83),string.char(99),string.char(114),string.char(111),string.char(108),string.char(108),string.char(66),string.char(97),string.char(114),string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(67),string.char(111),string.char(108),string.char(111),string.char(114),string.char(51)})
+	if Object:IsA("ScrollingFrame") then
+		return "ScrollBarImageColor3"
 	end 
-	if _nfJWyLEc:IsA(table.concat({string.char(85),string.char(73),string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})) then
-		return table.concat({string.char(67),string.char(111),string.char(108),string.char(111),string.char(114)})
+	if Object:IsA("UIStroke") then
+		return "Color"
 	end 
-	if _nfJWyLEc:IsA(table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)})) or _nfJWyLEc:IsA(table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(66),string.char(111),string.char(120)})) then
-		return table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(67),string.char(111),string.char(108),string.char(111),string.char(114),string.char(51)})
+	if Object:IsA("TextLabel") or Object:IsA("TextBox") then
+		return "TextColor3"
 	end   
-	if _nfJWyLEc:IsA(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)})) or _nfJWyLEc:IsA(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})) then
-		return table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(67),string.char(111),string.char(108),string.char(111),string.char(114),string.char(51)})
+	if Object:IsA("ImageLabel") or Object:IsA("ImageButton") then
+		return "ImageColor3"
 	end   
 end
 
-local _igaObJyz AddThemeObject(_nfJWyLEc, Type)
-	if not _dFqoOKdR.ThemeObjects[Type] then
-		_dFqoOKdR.ThemeObjects[Type] = {}
+local function AddThemeObject(Object, Type)
+	if not OrionLib.ThemeObjects[Type] then
+		OrionLib.ThemeObjects[Type] = {}
 	end    
-	table.insert(_dFqoOKdR.ThemeObjects[Type], _nfJWyLEc)
-	_nfJWyLEc[ReturnProperty(_nfJWyLEc)] = _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme][Type]
-	return _nfJWyLEc
+	table.insert(OrionLib.ThemeObjects[Type], Object)
+	Object[ReturnProperty(Object)] = OrionLib.Themes[OrionLib.SelectedTheme][Type]
+	return Object
 end    
 
-local _igaObJyz SetTheme()
-	for Name, Type in pairs(_dFqoOKdR.ThemeObjects) do
-		for _, _nfJWyLEc in pairs(Type) do
-			_nfJWyLEc[ReturnProperty(_nfJWyLEc)] = _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme][Name]
+local function SetTheme()
+	for Name, Type in pairs(OrionLib.ThemeObjects) do
+		for _, Object in pairs(Type) do
+			Object[ReturnProperty(Object)] = OrionLib.Themes[OrionLib.SelectedTheme][Name]
 		end    
 	end    
 end
 
-local _igaObJyz PackColor(_lKgBCGmj)
-	return {R = _lKgBCGmj.R * 255, G = _lKgBCGmj.G * 255, B = _lKgBCGmj.B * 255}
+local function PackColor(Color)
+	return {R = Color.R * 255, G = Color.G * 255, B = Color.B * 255}
 end    
 
-local _igaObJyz UnpackColor(_lKgBCGmj)
-	return Color3.fromRGB(_lKgBCGmj.R, _lKgBCGmj.G, _lKgBCGmj.B)
+local function UnpackColor(Color)
+	return Color3.fromRGB(Color.R, Color.G, Color.B)
 end
 
-local _igaObJyz LoadCfg(Config)
-	local _BpJGrosF = _yPFewlCe:JSONDecode(Config)
-	table.foreach(_BpJGrosF, _igaObJyz(a,b)
-		if _dFqoOKdR.Flags[a] then
-			spawn(_igaObJyz() 
-				if _dFqoOKdR.Flags[a].Type == table.concat({string.char(67),string.char(111),string.char(108),string.char(111),string.char(114),string.char(112),string.char(105),string.char(99),string.char(107),string.char(101),string.char(114)}) then
-					_dFqoOKdR.Flags[a]:Set(UnpackColor(b))
+local function LoadCfg(Config)
+	local Data = HttpService:JSONDecode(Config)
+	table.foreach(Data, function(a,b)
+		if OrionLib.Flags[a] then
+			spawn(function() 
+				if OrionLib.Flags[a].Type == "Colorpicker" then
+					OrionLib.Flags[a]:Set(UnpackColor(b))
 				else
-					_dFqoOKdR.Flags[a]:Set(b)
+					OrionLib.Flags[a]:Set(b)
 				end    
 			end)
 		else
-			warn(table.concat({string.char(79),string.char(114),string.char(105),string.char(111),string.char(110),string.char(32),string.char(76),string.char(105),string.char(98),string.char(114),string.char(97),string.char(114),string.char(121),string.char(32),string.char(67),string.char(111),string.char(110),string.char(102),string.char(105),string.char(103),string.char(32),string.char(76),string.char(111),string.char(97),string.char(100),string.char(101),string.char(114),string.char(32),string.char(45),string.char(32),string.char(67),string.char(111),string.char(117),string.char(108),string.char(100),string.char(32),string.char(110),string.char(111),string.char(116),string.char(32),string.char(102),string.char(105),string.char(110),string.char(100),string.char(32)}), a ,b)
+			warn("Orion Library Config Loader - Could not find ", a ,b)
 		end
 	end)
 end
 
-local _igaObJyz SaveCfg(Name)
-	local _BpJGrosF = {}
-	for i,v in pairs(_dFqoOKdR.Flags) do
+local function SaveCfg(Name)
+	local Data = {}
+	for i,v in pairs(OrionLib.Flags) do
 		if v.Save then
-			if v.Type == table.concat({string.char(67),string.char(111),string.char(108),string.char(111),string.char(114),string.char(112),string.char(105),string.char(99),string.char(107),string.char(101),string.char(114)}) then
-				_BpJGrosF[i] = PackColor(v.Value)
+			if v.Type == "Colorpicker" then
+				Data[i] = PackColor(v.Value)
 			else
-				_BpJGrosF[i] = v.Value
+				Data[i] = v.Value
 			end
 		end	
 	end
-	writefile(_dFqoOKdR.Folder .. table.concat({string.char(47)}) .. Name .. table.concat({string.char(46),string.char(116),string.char(120),string.char(116)}), tostring(_yPFewlCe:JSONEncode(_BpJGrosF)))
+	writefile(OrionLib.Folder .. "/" .. Name .. ".txt", tostring(HttpService:JSONEncode(Data)))
 end
 
-local _ybnKHpte = {Enum.UserInputType.MouseButton1, Enum.UserInputType.MouseButton2,Enum.UserInputType.MouseButton3}
-local _tNmKcUwO = {Enum.KeyCode.Unknown,Enum.KeyCode.W,Enum.KeyCode.A,Enum.KeyCode.S,Enum.KeyCode.D,Enum.KeyCode.Up,Enum.KeyCode.Left,Enum.KeyCode.Down,Enum.KeyCode.Right,Enum.KeyCode.Slash,Enum.KeyCode.Tab,Enum.KeyCode.Backspace,Enum.KeyCode.Escape}
+local WhitelistedMouse = {Enum.UserInputType.MouseButton1, Enum.UserInputType.MouseButton2,Enum.UserInputType.MouseButton3}
+local BlacklistedKeys = {Enum.KeyCode.Unknown,Enum.KeyCode.W,Enum.KeyCode.A,Enum.KeyCode.S,Enum.KeyCode.D,Enum.KeyCode.Up,Enum.KeyCode.Left,Enum.KeyCode.Down,Enum.KeyCode.Right,Enum.KeyCode.Slash,Enum.KeyCode.Tab,Enum.KeyCode.Backspace,Enum.KeyCode.Escape}
 
-local _igaObJyz CheckKey(Table, _rMoPOuDl)
+local function CheckKey(Table, Key)
 	for _, v in next, Table do
-		if v == _rMoPOuDl then
+		if v == Key then
 			return true
 		end
 	end
 end
 
-CreateElement(table.concat({string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}), _igaObJyz(Scale, Offset)
-	local _bNsZJcNv = Create(table.concat({string.char(85),string.char(73),string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}), {
+CreateElement("Corner", function(Scale, Offset)
+	local Corner = Create("UICorner", {
 		CornerRadius = UDim.new(Scale or 0, Offset or 10)
 	})
-	return _bNsZJcNv
+	return Corner
 end)
 
-CreateElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)}), _igaObJyz(_lKgBCGmj, Thickness)
-	local _FDADrzRO = Create(table.concat({string.char(85),string.char(73),string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)}), {
-		_lKgBCGmj = _lKgBCGmj or Color3.fromRGB(255, 255, 255),
+CreateElement("Stroke", function(Color, Thickness)
+	local Stroke = Create("UIStroke", {
+		Color = Color or Color3.fromRGB(255, 255, 255),
 		Thickness = Thickness or 1
 	})
-	return _FDADrzRO
+	return Stroke
 end)
 
-CreateElement(table.concat({string.char(76),string.char(105),string.char(115),string.char(116)}), _igaObJyz(Scale, Offset)
-	local _xiFYxLQT = Create(table.concat({string.char(85),string.char(73),string.char(76),string.char(105),string.char(115),string.char(116),string.char(76),string.char(97),string.char(121),string.char(111),string.char(117),string.char(116)}), {
+CreateElement("List", function(Scale, Offset)
+	local List = Create("UIListLayout", {
 		SortOrder = Enum.SortOrder.LayoutOrder,
-		_oiCHCrQf = UDim.new(Scale or 0, Offset or 0)
+		Padding = UDim.new(Scale or 0, Offset or 0)
 	})
-	return _xiFYxLQT
+	return List
 end)
 
-CreateElement(table.concat({string.char(80),string.char(97),string.char(100),string.char(100),string.char(105),string.char(110),string.char(103)}), _igaObJyz(Bottom, Left, Right, Top)
-	local _oiCHCrQf = Create(table.concat({string.char(85),string.char(73),string.char(80),string.char(97),string.char(100),string.char(100),string.char(105),string.char(110),string.char(103)}), {
+CreateElement("Padding", function(Bottom, Left, Right, Top)
+	local Padding = Create("UIPadding", {
 		PaddingBottom = UDim.new(0, Bottom or 4),
 		PaddingLeft = UDim.new(0, Left or 4),
 		PaddingRight = UDim.new(0, Right or 4),
 		PaddingTop = UDim.new(0, Top or 4)
 	})
-	return _oiCHCrQf
+	return Padding
 end)
 
-CreateElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), _igaObJyz()
-	local _mZTFrRMB = Create(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), {
+CreateElement("TFrame", function()
+	local TFrame = Create("Frame", {
 		BackgroundTransparency = 1
 	})
-	return _mZTFrRMB
+	return TFrame
 end)
 
-CreateElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), _igaObJyz(_lKgBCGmj)
-	local _VkiXxdOy = Create(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), {
-		BackgroundColor3 = _lKgBCGmj or Color3.fromRGB(255, 255, 255),
+CreateElement("Frame", function(Color)
+	local Frame = Create("Frame", {
+		BackgroundColor3 = Color or Color3.fromRGB(255, 255, 255),
 		BorderSizePixel = 0
 	})
-	return _VkiXxdOy
+	return Frame
 end)
 
-CreateElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), _igaObJyz(_lKgBCGmj, Scale, Offset)
-	local _VkiXxdOy = Create(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), {
-		BackgroundColor3 = _lKgBCGmj or Color3.fromRGB(255, 255, 255),
+CreateElement("RoundFrame", function(Color, Scale, Offset)
+	local Frame = Create("Frame", {
+		BackgroundColor3 = Color or Color3.fromRGB(255, 255, 255),
 		BorderSizePixel = 0
 	}, {
-		Create(table.concat({string.char(85),string.char(73),string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}), {
+		Create("UICorner", {
 			CornerRadius = UDim.new(Scale, Offset)
 		})
 	})
-	return _VkiXxdOy
+	return Frame
 end)
 
-CreateElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)}), _igaObJyz()
-	local _BcKVwiWD = Create(table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)}), {
+CreateElement("Button", function()
+	local Button = Create("TextButton", {
 		Text = "",
 		AutoButtonColor = false,
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0
 	})
-	return _BcKVwiWD
+	return Button
 end)
 
-CreateElement(table.concat({string.char(83),string.char(99),string.char(114),string.char(111),string.char(108),string.char(108),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), _igaObJyz(_lKgBCGmj, Width)
-	local _ebGERzZn = Create(table.concat({string.char(83),string.char(99),string.char(114),string.char(111),string.char(108),string.char(108),string.char(105),string.char(110),string.char(103),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), {
+CreateElement("ScrollFrame", function(Color, Width)
+	local ScrollFrame = Create("ScrollingFrame", {
 		BackgroundTransparency = 1,
-		MidImage = table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(55),string.char(52),string.char(52),string.char(53),string.char(53),string.char(52),string.char(51),string.char(54),string.char(54),string.char(55)}),
-		BottomImage = table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(55),string.char(52),string.char(52),string.char(53),string.char(53),string.char(52),string.char(51),string.char(54),string.char(54),string.char(55)}),
-		TopImage = table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(55),string.char(52),string.char(52),string.char(53),string.char(53),string.char(52),string.char(51),string.char(54),string.char(54),string.char(55)}),
-		ScrollBarImageColor3 = _lKgBCGmj,
+		MidImage = "rbxassetid://7445543667",
+		BottomImage = "rbxassetid://7445543667",
+		TopImage = "rbxassetid://7445543667",
+		ScrollBarImageColor3 = Color,
 		BorderSizePixel = 0,
 		ScrollBarThickness = Width,
 		CanvasSize = UDim2.new(0, 0, 0, 0)
 	})
-	return _ebGERzZn
+	return ScrollFrame
 end)
 
-CreateElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), _igaObJyz(ImageID)
-	local _scCkxjhv = Create(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), {
-		_xpTklmuy = ImageID,
+CreateElement("Image", function(ImageID)
+	local ImageNew = Create("ImageLabel", {
+		Image = ImageID,
 		BackgroundTransparency = 1
 	})
 
 	if GetIcon(ImageID) ~= nil then
-		_scCkxjhv._xpTklmuy = GetIcon(ImageID)
+		ImageNew.Image = GetIcon(ImageID)
 	end	
 
-	return _scCkxjhv
+	return ImageNew
 end)
 
-CreateElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)}), _igaObJyz(ImageID)
-	local _xpTklmuy = Create(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)}), {
-		_xpTklmuy = ImageID,
+CreateElement("ImageButton", function(ImageID)
+	local Image = Create("ImageButton", {
+		Image = ImageID,
 		BackgroundTransparency = 1
 	})
-	return _xpTklmuy
+	return Image
 end)
 
-CreateElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), _igaObJyz(Text, TextSize, Transparency)
-	local _KtbvrORe = Create(table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), {
+CreateElement("Label", function(Text, TextSize, Transparency)
+	local Label = Create("TextLabel", {
 		Text = Text or "",
 		TextColor3 = Color3.fromRGB(240, 240, 240),
 		TextTransparency = Transparency or 0,
@@ -373,92 +371,92 @@ CreateElement(table.concat({string.char(76),string.char(97),string.char(98),stri
 		BackgroundTransparency = 1,
 		TextXAlignment = Enum.TextXAlignment.Left
 	})
-	return _KtbvrORe
+	return Label
 end)
 
-local _FdQlZDyd = SetProps(SetChildren(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
-	SetProps(MakeElement(table.concat({string.char(76),string.char(105),string.char(115),string.char(116)})), {
+local NotificationHolder = SetProps(SetChildren(MakeElement("TFrame"), {
+	SetProps(MakeElement("List"), {
 		HorizontalAlignment = Enum.HorizontalAlignment.Center,
 		SortOrder = Enum.SortOrder.LayoutOrder,
 		VerticalAlignment = Enum.VerticalAlignment.Bottom,
-		_oiCHCrQf = UDim.new(0, 5)
+		Padding = UDim.new(0, 5)
 	})
 }), {
 	Position = UDim2.new(1, -25, 1, -25),
 	Size = UDim2.new(0, 300, 1, -25),
 	AnchorPoint = Vector2.new(1, 1),
-	Parent = _xzXevvpM
+	Parent = Orion
 })
 
-_igaObJyz _dFqoOKdR:MakeNotification(NotificationConfig)
-	spawn(_igaObJyz()
-		NotificationConfig.Name = NotificationConfig.Name or table.concat({string.char(78),string.char(111),string.char(116),string.char(105),string.char(102),string.char(105),string.char(99),string.char(97),string.char(116),string.char(105),string.char(111),string.char(110)})
-		NotificationConfig.Content = NotificationConfig.Content or table.concat({string.char(84),string.char(101),string.char(115),string.char(116)})
-		NotificationConfig._xpTklmuy = NotificationConfig._xpTklmuy or table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(52),string.char(51),string.char(56),string.char(52),string.char(52),string.char(48),string.char(51),string.char(53),string.char(51),string.char(50)})
+function OrionLib:MakeNotification(NotificationConfig)
+	spawn(function()
+		NotificationConfig.Name = NotificationConfig.Name or "Notification"
+		NotificationConfig.Content = NotificationConfig.Content or "Test"
+		NotificationConfig.Image = NotificationConfig.Image or "rbxassetid://4384403532"
 		NotificationConfig.Time = NotificationConfig.Time or 15
 
-		local _wbFVaXfL = SetProps(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+		local NotificationParent = SetProps(MakeElement("TFrame"), {
 			Size = UDim2.new(1, 0, 0, 0),
 			AutomaticSize = Enum.AutomaticSize.Y,
-			Parent = _FdQlZDyd
+			Parent = NotificationHolder
 		})
 
-		local _elubebyA = SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(25, 25, 25), 0, 10), {
-			Parent = _wbFVaXfL, 
+		local NotificationFrame = SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(25, 25, 25), 0, 10), {
+			Parent = NotificationParent, 
 			Size = UDim2.new(1, 0, 0, 0),
 			Position = UDim2.new(1, -55, 0, 0),
 			BackgroundTransparency = 0,
 			AutomaticSize = Enum.AutomaticSize.Y
 		}), {
-			MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)}), Color3.fromRGB(93, 93, 93), 1.2),
-			MakeElement(table.concat({string.char(80),string.char(97),string.char(100),string.char(100),string.char(105),string.char(110),string.char(103)}), 12, 12, 12, 12),
-			SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), NotificationConfig._xpTklmuy), {
+			MakeElement("Stroke", Color3.fromRGB(93, 93, 93), 1.2),
+			MakeElement("Padding", 12, 12, 12, 12),
+			SetProps(MakeElement("Image", NotificationConfig.Image), {
 				Size = UDim2.new(0, 20, 0, 20),
 				ImageColor3 = Color3.fromRGB(240, 240, 240),
-				Name = table.concat({string.char(73),string.char(99),string.char(111),string.char(110)})
+				Name = "Icon"
 			}),
-			SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), NotificationConfig.Name, 15), {
+			SetProps(MakeElement("Label", NotificationConfig.Name, 15), {
 				Size = UDim2.new(1, -30, 0, 20),
 				Position = UDim2.new(0, 30, 0, 0),
 				Font = Enum.Font.GothamBold,
-				Name = table.concat({string.char(84),string.char(105),string.char(116),string.char(108),string.char(101)})
+				Name = "Title"
 			}),
-			SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), NotificationConfig.Content, 14), {
+			SetProps(MakeElement("Label", NotificationConfig.Content, 14), {
 				Size = UDim2.new(1, 0, 0, 0),
 				Position = UDim2.new(0, 0, 0, 25),
 				Font = Enum.Font.GothamSemibold,
-				Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)}),
+				Name = "Content",
 				AutomaticSize = Enum.AutomaticSize.Y,
 				TextColor3 = Color3.fromRGB(200, 200, 200),
 				TextWrapped = true
 			})
 		})
 
-		_ZntjFyDM:Create(_elubebyA, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(0, 0, 0, 0)}):Play()
+		TweenService:Create(NotificationFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(0, 0, 0, 0)}):Play()
 
 		wait(NotificationConfig.Time - 0.88)
-		_ZntjFyDM:Create(_elubebyA.Icon, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
-		_ZntjFyDM:Create(_elubebyA, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.6}):Play()
+		TweenService:Create(NotificationFrame.Icon, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
+		TweenService:Create(NotificationFrame, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.6}):Play()
 		wait(0.3)
-		_ZntjFyDM:Create(_elubebyA.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0.9}):Play()
-		_ZntjFyDM:Create(_elubebyA.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.4}):Play()
-		_ZntjFyDM:Create(_elubebyA.Content, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.5}):Play()
+		TweenService:Create(NotificationFrame.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0.9}):Play()
+		TweenService:Create(NotificationFrame.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.4}):Play()
+		TweenService:Create(NotificationFrame.Content, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.5}):Play()
 		wait(0.05)
 
-		_elubebyA:TweenPosition(UDim2.new(1, 20, 0, 0),table.concat({string.char(73),string.char(110)}),table.concat({string.char(81),string.char(117),string.char(105),string.char(110),string.char(116)}),0.8,true)
+		NotificationFrame:TweenPosition(UDim2.new(1, 20, 0, 0),'In','Quint',0.8,true)
 		wait(1.35)
-		_elubebyA:Destroy()
+		NotificationFrame:Destroy()
 	end)
 end    
 
-_igaObJyz _dFqoOKdR:Init()
-	if _dFqoOKdR.SaveCfg then	
-		pcall(_igaObJyz()
-			if isfile(_dFqoOKdR.Folder .. table.concat({string.char(47)}) .. game.GameId .. table.concat({string.char(46),string.char(116),string.char(120),string.char(116)})) then
-				LoadCfg(readfile(_dFqoOKdR.Folder .. table.concat({string.char(47)}) .. game.GameId .. table.concat({string.char(46),string.char(116),string.char(120),string.char(116)})))
-				_dFqoOKdR:MakeNotification({
-					Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(102),string.char(105),string.char(103),string.char(117),string.char(114),string.char(97),string.char(116),string.char(105),string.char(111),string.char(110)}),
-					Content = table.concat({string.char(65),string.char(117),string.char(116),string.char(111),string.char(45),string.char(108),string.char(111),string.char(97),string.char(100),string.char(101),string.char(100),string.char(32),string.char(99),string.char(111),string.char(110),string.char(102),string.char(105),string.char(103),string.char(117),string.char(114),string.char(97),string.char(116),string.char(105),string.char(111),string.char(110),string.char(32),string.char(102),string.char(111),string.char(114),string.char(32),string.char(116),string.char(104),string.char(101),string.char(32),string.char(103),string.char(97),string.char(109),string.char(101),string.char(32)}) .. game.GameId .. table.concat({string.char(46)}),
+function OrionLib:Init()
+	if OrionLib.SaveCfg then	
+		pcall(function()
+			if isfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt") then
+				LoadCfg(readfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt"))
+				OrionLib:MakeNotification({
+					Name = "Configuration",
+					Content = "Auto-loaded configuration for the game " .. game.GameId .. ".",
 					Time = 5
 				})
 			end
@@ -466,27 +464,27 @@ _igaObJyz _dFqoOKdR:Init()
 	end	
 end	
 
-_igaObJyz _dFqoOKdR:MakeWindow(WindowConfig)
-	local _ztqMzqfW = true
-	local _JWkBgkGt = false
-	local _KzOHNNZp = false
-	local _hTDDGhzj = false
+function OrionLib:MakeWindow(WindowConfig)
+	local FirstTab = true
+	local Minimized = false
+	local Loaded = false
+	local UIHidden = false
 
 	WindowConfig = WindowConfig or {}
-	WindowConfig.Name = WindowConfig.Name or table.concat({string.char(79),string.char(114),string.char(105),string.char(111),string.char(110),string.char(32),string.char(76),string.char(105),string.char(98),string.char(114),string.char(97),string.char(114),string.char(121)})
+	WindowConfig.Name = WindowConfig.Name or "Orion Library"
 	WindowConfig.ConfigFolder = WindowConfig.ConfigFolder or WindowConfig.Name
 	WindowConfig.SaveConfig = WindowConfig.SaveConfig or false
 	WindowConfig.HidePremium = WindowConfig.HidePremium or false
 	if WindowConfig.IntroEnabled == nil then
 		WindowConfig.IntroEnabled = true
 	end
-	WindowConfig.IntroText = WindowConfig.IntroText or table.concat({string.char(79),string.char(114),string.char(105),string.char(111),string.char(110),string.char(32),string.char(76),string.char(105),string.char(98),string.char(114),string.char(97),string.char(114),string.char(121)})
-	WindowConfig.CloseCallback = WindowConfig.CloseCallback or _igaObJyz() end
+	WindowConfig.IntroText = WindowConfig.IntroText or "Orion Library"
+	WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
 	WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
-	WindowConfig.Icon = WindowConfig.Icon or table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(56),string.char(56),string.char(51),string.char(52),string.char(55),string.char(52),string.char(56),string.char(49),string.char(48),string.char(51)})
-	WindowConfig.IntroIcon = WindowConfig.IntroIcon or table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(56),string.char(56),string.char(51),string.char(52),string.char(55),string.char(52),string.char(56),string.char(49),string.char(48),string.char(51)})
-	_dFqoOKdR.Folder = WindowConfig.ConfigFolder
-	_dFqoOKdR.SaveCfg = WindowConfig.SaveConfig
+	WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://8834748103"
+	WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://8834748103"
+	OrionLib.Folder = WindowConfig.ConfigFolder
+	OrionLib.SaveCfg = WindowConfig.SaveConfig
 
 	if WindowConfig.SaveConfig then
 		if not isfolder(WindowConfig.ConfigFolder) then
@@ -494,202 +492,202 @@ _igaObJyz _dFqoOKdR:MakeWindow(WindowConfig)
 		end	
 	end
 
-	local _OblvQHaU = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(83),string.char(99),string.char(114),string.char(111),string.char(108),string.char(108),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 4), {
+	local TabHolder = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 4), {
 		Size = UDim2.new(1, 0, 1, -50)
 	}), {
-		MakeElement(table.concat({string.char(76),string.char(105),string.char(115),string.char(116)})),
-		MakeElement(table.concat({string.char(80),string.char(97),string.char(100),string.char(100),string.char(105),string.char(110),string.char(103)}), 8, 0, 0, 8)
-	}), table.concat({string.char(68),string.char(105),string.char(118),string.char(105),string.char(100),string.char(101),string.char(114)}))
+		MakeElement("List"),
+		MakeElement("Padding", 8, 0, 0, 8)
+	}), "Divider")
 
-	AddConnection(_OblvQHaU.UIListLayout:GetPropertyChangedSignal(table.concat({string.char(65),string.char(98),string.char(115),string.char(111),string.char(108),string.char(117),string.char(116),string.char(101),string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116),string.char(83),string.char(105),string.char(122),string.char(101)})), _igaObJyz()
-		_OblvQHaU.CanvasSize = UDim2.new(0, 0, 0, _OblvQHaU.UIListLayout.AbsoluteContentSize.Y + 16)
+	AddConnection(TabHolder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+		TabHolder.CanvasSize = UDim2.new(0, 0, 0, TabHolder.UIListLayout.AbsoluteContentSize.Y + 16)
 	end)
 
-	local _gDxKLwgM = SetChildren(SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+	local CloseBtn = SetChildren(SetProps(MakeElement("Button"), {
 		Size = UDim2.new(0.5, 0, 1, 0),
 		Position = UDim2.new(0.5, 0, 0, 0),
 		BackgroundTransparency = 1
 	}), {
-		AddThemeObject(SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(55),string.char(48),string.char(55),string.char(50),string.char(55),string.char(50),string.char(53),string.char(51),string.char(52),string.char(50)})), {
+		AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072725342"), {
 			Position = UDim2.new(0, 9, 0, 6),
 			Size = UDim2.new(0, 18, 0, 18)
-		}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
+		}), "Text")
 	})
 
-	local _kYdPVZch = SetChildren(SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+	local MinimizeBtn = SetChildren(SetProps(MakeElement("Button"), {
 		Size = UDim2.new(0.5, 0, 1, 0),
 		BackgroundTransparency = 1
 	}), {
-		AddThemeObject(SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(55),string.char(48),string.char(55),string.char(50),string.char(55),string.char(49),string.char(57),string.char(51),string.char(51),string.char(56)})), {
+		AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072719338"), {
 			Position = UDim2.new(0, 9, 0, 6),
 			Size = UDim2.new(0, 18, 0, 18),
-			Name = table.concat({string.char(73),string.char(99),string.char(111)})
-		}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
+			Name = "Ico"
+		}), "Text")
 	})
 
-	local _ZvSXLnES = SetProps(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+	local DragPoint = SetProps(MakeElement("TFrame"), {
 		Size = UDim2.new(1, 0, 0, 50)
 	})
 
-	local _xnoAODBr = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 10), {
+	local WindowStuff = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 10), {
 		Size = UDim2.new(0, 150, 1, -50),
 		Position = UDim2.new(0, 0, 0, 50)
 	}), {
-		AddThemeObject(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+		AddThemeObject(SetProps(MakeElement("Frame"), {
 			Size = UDim2.new(1, 0, 0, 10),
 			Position = UDim2.new(0, 0, 0, 0)
-		}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)})), 
-		AddThemeObject(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+		}), "Second"), 
+		AddThemeObject(SetProps(MakeElement("Frame"), {
 			Size = UDim2.new(0, 10, 1, 0),
 			Position = UDim2.new(1, -10, 0, 0)
-		}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)})), 
-		AddThemeObject(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+		}), "Second"), 
+		AddThemeObject(SetProps(MakeElement("Frame"), {
 			Size = UDim2.new(0, 1, 1, 0),
 			Position = UDim2.new(1, -1, 0, 0)
-		}), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), 
-		_OblvQHaU,
-		SetChildren(SetProps(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+		}), "Stroke"), 
+		TabHolder,
+		SetChildren(SetProps(MakeElement("TFrame"), {
 			Size = UDim2.new(1, 0, 0, 50),
 			Position = UDim2.new(0, 0, 1, -50)
 		}), {
-			AddThemeObject(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+			AddThemeObject(SetProps(MakeElement("Frame"), {
 				Size = UDim2.new(1, 0, 0, 1)
-			}), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), 
-			AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+			}), "Stroke"), 
+			AddThemeObject(SetChildren(SetProps(MakeElement("Frame"), {
 				AnchorPoint = Vector2.new(0, 0.5),
 				Size = UDim2.new(0, 32, 0, 32),
 				Position = UDim2.new(0, 10, 0.5, 0)
 			}), {
-				SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(104),string.char(116),string.char(116),string.char(112),string.char(115),string.char(58),string.char(47),string.char(47),string.char(119),string.char(119),string.char(119),string.char(46),string.char(114),string.char(111),string.char(98),string.char(108),string.char(111),string.char(120),string.char(46),string.char(99),string.char(111),string.char(109),string.char(47),string.char(104),string.char(101),string.char(97),string.char(100),string.char(115),string.char(104),string.char(111),string.char(116),string.char(45),string.char(116),string.char(104),string.char(117),string.char(109),string.char(98),string.char(110),string.char(97),string.char(105),string.char(108),string.char(47),string.char(105),string.char(109),string.char(97),string.char(103),string.char(101),string.char(63),string.char(117),string.char(115),string.char(101),string.char(114),string.char(73),string.char(100),string.char(61)}).. _LrFKckfo.UserId ..table.concat({string.char(38),string.char(119),string.char(105),string.char(100),string.char(116),string.char(104),string.char(61),string.char(52),string.char(50),string.char(48),string.char(38),string.char(104),string.char(101),string.char(105),string.char(103),string.char(104),string.char(116),string.char(61),string.char(52),string.char(50),string.char(48),string.char(38),string.char(102),string.char(111),string.char(114),string.char(109),string.char(97),string.char(116),string.char(61),string.char(112),string.char(110),string.char(103)})), {
+				SetProps(MakeElement("Image", "https://www.roblox.com/headshot-thumbnail/image?userId=".. LocalPlayer.UserId .."&width=420&height=420&format=png"), {
 					Size = UDim2.new(1, 0, 1, 0)
 				}),
-				AddThemeObject(SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(52),string.char(48),string.char(51),string.char(49),string.char(56),string.char(56),string.char(57),string.char(57),string.char(50),string.char(56)})), {
+				AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://4031889928"), {
 					Size = UDim2.new(1, 0, 1, 0),
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)})),
-				MakeElement(table.concat({string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}), 1)
-			}), table.concat({string.char(68),string.char(105),string.char(118),string.char(105),string.char(100),string.char(101),string.char(114)})),
-			SetChildren(SetProps(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+				}), "Second"),
+				MakeElement("Corner", 1)
+			}), "Divider"),
+			SetChildren(SetProps(MakeElement("TFrame"), {
 				AnchorPoint = Vector2.new(0, 0.5),
 				Size = UDim2.new(0, 32, 0, 32),
 				Position = UDim2.new(0, 10, 0.5, 0)
 			}), {
-				AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-				MakeElement(table.concat({string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}), 1)
+				AddThemeObject(MakeElement("Stroke"), "Stroke"),
+				MakeElement("Corner", 1)
 			}),
-			AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), _LrFKckfo.DisplayName, WindowConfig.HidePremium and 14 or 13), {
+			AddThemeObject(SetProps(MakeElement("Label", LocalPlayer.DisplayName, WindowConfig.HidePremium and 14 or 13), {
 				Size = UDim2.new(1, -60, 0, 13),
 				Position = WindowConfig.HidePremium and UDim2.new(0, 50, 0, 19) or UDim2.new(0, 50, 0, 12),
 				Font = Enum.Font.GothamBold,
 				ClipsDescendants = true
-			}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-			AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), "", 12), {
+			}), "Text"),
+			AddThemeObject(SetProps(MakeElement("Label", "", 12), {
 				Size = UDim2.new(1, -60, 0, 12),
 				Position = UDim2.new(0, 50, 1, -25),
 				Visible = not WindowConfig.HidePremium
-			}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(68),string.char(97),string.char(114),string.char(107)}))
+			}), "TextDark")
 		}),
-	}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+	}), "Second")
 
-	local _OKYmhZLn = AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), WindowConfig.Name, 14), {
+	local WindowName = AddThemeObject(SetProps(MakeElement("Label", WindowConfig.Name, 14), {
 		Size = UDim2.new(1, -30, 2, 0),
 		Position = UDim2.new(0, 25, 0, -24),
 		Font = Enum.Font.GothamBlack,
 		TextSize = 20
-	}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
+	}), "Text")
 
-	local _zrAWSAhi = AddThemeObject(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+	local WindowTopBarLine = AddThemeObject(SetProps(MakeElement("Frame"), {
 		Size = UDim2.new(1, 0, 0, 1),
 		Position = UDim2.new(0, 0, 1, -1)
-	}), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)}))
+	}), "Stroke")
 
-	local _giwBCzOH = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 10), {
-		Parent = _xzXevvpM,
+	local MainWindow = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 10), {
+		Parent = Orion,
 		Position = UDim2.new(0.5, -307, 0.5, -172),
 		Size = UDim2.new(0, 615, 0, 344),
 		ClipsDescendants = true
 	}), {
-		--SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(51),string.char(53),string.char(50),string.char(51),string.char(55),string.char(50),string.char(56),string.char(48),string.char(55),string.char(55)})), {
+		--SetProps(MakeElement("Image", "rbxassetid://3523728077"), {
 		--	AnchorPoint = Vector2.new(0.5, 0.5),
 		--	Position = UDim2.new(0.5, 0, 0.5, 0),
 		--	Size = UDim2.new(1, 80, 1, 320),
 		--	ImageColor3 = Color3.fromRGB(33, 33, 33),
 		--	ImageTransparency = 0.7
 		--}),
-		SetChildren(SetProps(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+		SetChildren(SetProps(MakeElement("TFrame"), {
 			Size = UDim2.new(1, 0, 0, 50),
-			Name = table.concat({string.char(84),string.char(111),string.char(112),string.char(66),string.char(97),string.char(114)})
+			Name = "TopBar"
 		}), {
-			_OKYmhZLn,
-			_zrAWSAhi,
-			AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 7), {
+			WindowName,
+			WindowTopBarLine,
+			AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 7), {
 				Size = UDim2.new(0, 70, 0, 30),
 				Position = UDim2.new(1, -90, 0, 10)
 			}), {
-				AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-				AddThemeObject(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+				AddThemeObject(MakeElement("Stroke"), "Stroke"),
+				AddThemeObject(SetProps(MakeElement("Frame"), {
 					Size = UDim2.new(0, 1, 1, 0),
 					Position = UDim2.new(0.5, 0, 0, 0)
-				}), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), 
-				_gDxKLwgM,
-				_kYdPVZch
-			}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)})), 
+				}), "Stroke"), 
+				CloseBtn,
+				MinimizeBtn
+			}), "Second"), 
 		}),
-		_ZvSXLnES,
-		_xnoAODBr
-	}), table.concat({string.char(77),string.char(97),string.char(105),string.char(110)}))
+		DragPoint,
+		WindowStuff
+	}), "Main")
 
 	if WindowConfig.ShowIcon then
-		_OKYmhZLn.Position = UDim2.new(0, 50, 0, -24)
-		local _fWXyvmpx = SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), WindowConfig.Icon), {
+		WindowName.Position = UDim2.new(0, 50, 0, -24)
+		local WindowIcon = SetProps(MakeElement("Image", WindowConfig.Icon), {
 			Size = UDim2.new(0, 20, 0, 20),
 			Position = UDim2.new(0, 25, 0, 15)
 		})
-		_fWXyvmpx.Parent = _giwBCzOH.TopBar
+		WindowIcon.Parent = MainWindow.TopBar
 	end	
 
-	MakeDraggable(_ZvSXLnES, _giwBCzOH)
+	MakeDraggable(DragPoint, MainWindow)
 
-	AddConnection(_gDxKLwgM.MouseButton1Up, _igaObJyz()
-		_giwBCzOH.Visible = false
-		_hTDDGhzj = true
-		_dFqoOKdR:MakeNotification({
-			Name = table.concat({string.char(73),string.char(110),string.char(116),string.char(101),string.char(114),string.char(102),string.char(97),string.char(99),string.char(101),string.char(32),string.char(72),string.char(105),string.char(100),string.char(100),string.char(101),string.char(110)}),
-			Content = table.concat({string.char(84),string.char(97),string.char(112),string.char(32),string.char(82),string.char(105),string.char(103),string.char(104),string.char(116),string.char(83),string.char(104),string.char(105),string.char(102),string.char(116),string.char(32),string.char(116),string.char(111),string.char(32),string.char(114),string.char(101),string.char(111),string.char(112),string.char(101),string.char(110),string.char(32),string.char(116),string.char(104),string.char(101),string.char(32),string.char(105),string.char(110),string.char(116),string.char(101),string.char(114),string.char(102),string.char(97),string.char(99),string.char(101)}),
+	AddConnection(CloseBtn.MouseButton1Up, function()
+		MainWindow.Visible = false
+		UIHidden = true
+		OrionLib:MakeNotification({
+			Name = "Interface Hidden",
+			Content = "Tap RightShift to reopen the interface",
 			Time = 5
 		})
 		WindowConfig.CloseCallback()
 	end)
 
-	AddConnection(_Iokakucr.InputBegan, _igaObJyz(Input)
-		if Input.KeyCode == Enum.KeyCode.RightShift and _hTDDGhzj then
-			_giwBCzOH.Visible = true
+	AddConnection(UserInputService.InputBegan, function(Input)
+		if Input.KeyCode == Enum.KeyCode.RightShift and UIHidden then
+			MainWindow.Visible = true
 		end
 	end)
 
-	AddConnection(_kYdPVZch.MouseButton1Up, _igaObJyz()
-		if _JWkBgkGt then
-			_ZntjFyDM:Create(_giwBCzOH, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, 615, 0, 344)}):Play()
-			_kYdPVZch.Ico._xpTklmuy = table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(55),string.char(48),string.char(55),string.char(50),string.char(55),string.char(49),string.char(57),string.char(51),string.char(51),string.char(56)})
+	AddConnection(MinimizeBtn.MouseButton1Up, function()
+		if Minimized then
+			TweenService:Create(MainWindow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, 615, 0, 344)}):Play()
+			MinimizeBtn.Ico.Image = "rbxassetid://7072719338"
 			wait(.02)
-			_giwBCzOH.ClipsDescendants = false
-			_xnoAODBr.Visible = true
-			_zrAWSAhi.Visible = true
+			MainWindow.ClipsDescendants = false
+			WindowStuff.Visible = true
+			WindowTopBarLine.Visible = true
 		else
-			_giwBCzOH.ClipsDescendants = true
-			_zrAWSAhi.Visible = false
-			_kYdPVZch.Ico._xpTklmuy = table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(55),string.char(48),string.char(55),string.char(50),string.char(55),string.char(50),string.char(48),string.char(56),string.char(55),string.char(48)})
+			MainWindow.ClipsDescendants = true
+			WindowTopBarLine.Visible = false
+			MinimizeBtn.Ico.Image = "rbxassetid://7072720870"
 
-			_ZntjFyDM:Create(_giwBCzOH, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, _OKYmhZLn.TextBounds.X + 140, 0, 50)}):Play()
+			TweenService:Create(MainWindow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, WindowName.TextBounds.X + 140, 0, 50)}):Play()
 			wait(0.1)
-			_xnoAODBr.Visible = false	
+			WindowStuff.Visible = false	
 		end
-		_JWkBgkGt = not _JWkBgkGt    
+		Minimized = not Minimized    
 	end)
 
-	local _igaObJyz LoadSequence()
-		_giwBCzOH.Visible = false
-		local _xeVjulOO = SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), WindowConfig.IntroIcon), {
-			Parent = _xzXevvpM,
+	local function LoadSequence()
+		MainWindow.Visible = false
+		local LoadSequenceLogo = SetProps(MakeElement("Image", WindowConfig.IntroIcon), {
+			Parent = Orion,
 			AnchorPoint = Vector2.new(0.5, 0.5),
 			Position = UDim2.new(0.5, 0, 0.4, 0),
 			Size = UDim2.new(0, 28, 0, 28),
@@ -697,8 +695,8 @@ _igaObJyz _dFqoOKdR:MakeWindow(WindowConfig)
 			ImageTransparency = 1
 		})
 
-		local _tkDndghO = SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), WindowConfig.IntroText, 14), {
-			Parent = _xzXevvpM,
+		local LoadSequenceText = SetProps(MakeElement("Label", WindowConfig.IntroText, 14), {
+			Parent = Orion,
 			Size = UDim2.new(1, 0, 1, 0),
 			AnchorPoint = Vector2.new(0.5, 0.5),
 			Position = UDim2.new(0.5, 19, 0.5, 0),
@@ -707,801 +705,801 @@ _igaObJyz _dFqoOKdR:MakeWindow(WindowConfig)
 			TextTransparency = 1
 		})
 
-		_ZntjFyDM:Create(_xeVjulOO, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
 		wait(0.8)
-		_ZntjFyDM:Create(_xeVjulOO, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -(_tkDndghO.TextBounds.X/2), 0.5, 0)}):Play()
+		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -(LoadSequenceText.TextBounds.X/2), 0.5, 0)}):Play()
 		wait(0.3)
-		_ZntjFyDM:Create(_tkDndghO, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+		TweenService:Create(LoadSequenceText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
 		wait(2)
-		_ZntjFyDM:Create(_tkDndghO, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
-		_giwBCzOH.Visible = true
-		_xeVjulOO:Destroy()
-		_tkDndghO:Destroy()
+		TweenService:Create(LoadSequenceText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
+		MainWindow.Visible = true
+		LoadSequenceLogo:Destroy()
+		LoadSequenceText:Destroy()
 	end 
 
 	if WindowConfig.IntroEnabled then
 		LoadSequence()
 	end	
 
-	local _ZvATgWWx = {}
-	_igaObJyz _ZvATgWWx:MakeTab(TabConfig)
+	local TabFunction = {}
+	function TabFunction:MakeTab(TabConfig)
 		TabConfig = TabConfig or {}
-		TabConfig.Name = TabConfig.Name or table.concat({string.char(84),string.char(97),string.char(98)})
+		TabConfig.Name = TabConfig.Name or "Tab"
 		TabConfig.Icon = TabConfig.Icon or ""
 		TabConfig.PremiumOnly = TabConfig.PremiumOnly or false
 
-		local _oDDZwiPu = SetChildren(SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+		local TabFrame = SetChildren(SetProps(MakeElement("Button"), {
 			Size = UDim2.new(1, 0, 0, 30),
-			Parent = _OblvQHaU
+			Parent = TabHolder
 		}), {
-			AddThemeObject(SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), TabConfig.Icon), {
+			AddThemeObject(SetProps(MakeElement("Image", TabConfig.Icon), {
 				AnchorPoint = Vector2.new(0, 0.5),
 				Size = UDim2.new(0, 18, 0, 18),
 				Position = UDim2.new(0, 10, 0.5, 0),
 				ImageTransparency = 0.4,
-				Name = table.concat({string.char(73),string.char(99),string.char(111)})
-			}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-			AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), TabConfig.Name, 14), {
+				Name = "Ico"
+			}), "Text"),
+			AddThemeObject(SetProps(MakeElement("Label", TabConfig.Name, 14), {
 				Size = UDim2.new(1, -35, 1, 0),
 				Position = UDim2.new(0, 35, 0, 0),
 				Font = Enum.Font.GothamSemibold,
 				TextTransparency = 0.4,
-				Name = table.concat({string.char(84),string.char(105),string.char(116),string.char(108),string.char(101)})
-			}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
+				Name = "Title"
+			}), "Text")
 		})
 
 		if GetIcon(TabConfig.Icon) ~= nil then
-			_oDDZwiPu.Ico._xpTklmuy = GetIcon(TabConfig.Icon)
+			TabFrame.Ico.Image = GetIcon(TabConfig.Icon)
 		end	
 
-		local _oZncrHws = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(83),string.char(99),string.char(114),string.char(111),string.char(108),string.char(108),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 5), {
+		local Container = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 5), {
 			Size = UDim2.new(1, -150, 1, -50),
 			Position = UDim2.new(0, 150, 0, 50),
-			Parent = _giwBCzOH,
+			Parent = MainWindow,
 			Visible = false,
-			Name = table.concat({string.char(73),string.char(116),string.char(101),string.char(109),string.char(67),string.char(111),string.char(110),string.char(116),string.char(97),string.char(105),string.char(110),string.char(101),string.char(114)})
+			Name = "ItemContainer"
 		}), {
-			MakeElement(table.concat({string.char(76),string.char(105),string.char(115),string.char(116)}), 0, 6),
-			MakeElement(table.concat({string.char(80),string.char(97),string.char(100),string.char(100),string.char(105),string.char(110),string.char(103)}), 15, 10, 10, 15)
-		}), table.concat({string.char(68),string.char(105),string.char(118),string.char(105),string.char(100),string.char(101),string.char(114)}))
+			MakeElement("List", 0, 6),
+			MakeElement("Padding", 15, 10, 10, 15)
+		}), "Divider")
 
-		AddConnection(_oZncrHws.UIListLayout:GetPropertyChangedSignal(table.concat({string.char(65),string.char(98),string.char(115),string.char(111),string.char(108),string.char(117),string.char(116),string.char(101),string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116),string.char(83),string.char(105),string.char(122),string.char(101)})), _igaObJyz()
-			_oZncrHws.CanvasSize = UDim2.new(0, 0, 0, _oZncrHws.UIListLayout.AbsoluteContentSize.Y + 30)
+		AddConnection(Container.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+			Container.CanvasSize = UDim2.new(0, 0, 0, Container.UIListLayout.AbsoluteContentSize.Y + 30)
 		end)
 
-		if _ztqMzqfW then
-			_ztqMzqfW = false
-			_oDDZwiPu.Ico.ImageTransparency = 0
-			_oDDZwiPu.Title.TextTransparency = 0
-			_oDDZwiPu.Title.Font = Enum.Font.GothamBlack
-			_oZncrHws.Visible = true
+		if FirstTab then
+			FirstTab = false
+			TabFrame.Ico.ImageTransparency = 0
+			TabFrame.Title.TextTransparency = 0
+			TabFrame.Title.Font = Enum.Font.GothamBlack
+			Container.Visible = true
 		end    
 
-		AddConnection(_oDDZwiPu.MouseButton1Click, _igaObJyz()
-			for _, Tab in next, _OblvQHaU:GetChildren() do
-				if Tab:IsA(table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})) then
+		AddConnection(TabFrame.MouseButton1Click, function()
+			for _, Tab in next, TabHolder:GetChildren() do
+				if Tab:IsA("TextButton") then
 					Tab.Title.Font = Enum.Font.GothamSemibold
-					_ZntjFyDM:Create(Tab.Ico, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0.4}):Play()
-					_ZntjFyDM:Create(Tab.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0.4}):Play()
+					TweenService:Create(Tab.Ico, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0.4}):Play()
+					TweenService:Create(Tab.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0.4}):Play()
 				end    
 			end
-			for _, ItemContainer in next, _giwBCzOH:GetChildren() do
-				if ItemContainer.Name == table.concat({string.char(73),string.char(116),string.char(101),string.char(109),string.char(67),string.char(111),string.char(110),string.char(116),string.char(97),string.char(105),string.char(110),string.char(101),string.char(114)}) then
+			for _, ItemContainer in next, MainWindow:GetChildren() do
+				if ItemContainer.Name == "ItemContainer" then
 					ItemContainer.Visible = false
 				end    
 			end  
-			_ZntjFyDM:Create(_oDDZwiPu.Ico, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play()
-			_ZntjFyDM:Create(_oDDZwiPu.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
-			_oDDZwiPu.Title.Font = Enum.Font.GothamBlack
-			_oZncrHws.Visible = true   
+			TweenService:Create(TabFrame.Ico, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play()
+			TweenService:Create(TabFrame.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+			TabFrame.Title.Font = Enum.Font.GothamBlack
+			Container.Visible = true   
 		end)
 
-		local _igaObJyz GetElements(ItemParent)
-			local _vvyQwbex = {}
-			_igaObJyz _vvyQwbex:AddLabel(Text)
-				local _DcrOxofh = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 5), {
+		local function GetElements(ItemParent)
+			local ElementFunction = {}
+			function ElementFunction:AddLabel(Text)
+				local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 30),
 					BackgroundTransparency = 0.7,
 					Parent = ItemParent
 				}), {
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), Text, 15), {
+					AddThemeObject(SetProps(MakeElement("Label", Text, 15), {
 						Size = UDim2.new(1, -12, 1, 0),
 						Position = UDim2.new(0, 12, 0, 0),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)}))
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke")
+				}), "Second")
 
-				local _BqiKkeWN = {}
-				_igaObJyz _BqiKkeWN:Set(ToChange)
-					_DcrOxofh.Content.Text = ToChange
+				local LabelFunction = {}
+				function LabelFunction:Set(ToChange)
+					LabelFrame.Content.Text = ToChange
 				end
-				return _BqiKkeWN
+				return LabelFunction
 			end
-			_igaObJyz _vvyQwbex:AddParagraph(Text, Content)
-				Text = Text or table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})
-				Content = Content or table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
+			function ElementFunction:AddParagraph(Text, Content)
+				Text = Text or "Text"
+				Content = Content or "Content"
 
-				local _Hvlfnfxa = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 5), {
+				local ParagraphFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 30),
 					BackgroundTransparency = 0.7,
 					Parent = ItemParent
 				}), {
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), Text, 15), {
+					AddThemeObject(SetProps(MakeElement("Label", Text, 15), {
 						Size = UDim2.new(1, -12, 0, 14),
 						Position = UDim2.new(0, 12, 0, 10),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(84),string.char(105),string.char(116),string.char(108),string.char(101)})
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), "", 13), {
+						Name = "Title"
+					}), "Text"),
+					AddThemeObject(SetProps(MakeElement("Label", "", 13), {
 						Size = UDim2.new(1, -24, 0, 0),
 						Position = UDim2.new(0, 12, 0, 26),
 						Font = Enum.Font.GothamSemibold,
-						Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)}),
+						Name = "Content",
 						TextWrapped = true
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(68),string.char(97),string.char(114),string.char(107)})),
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)}))
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+					}), "TextDark"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke")
+				}), "Second")
 
-				AddConnection(_Hvlfnfxa.Content:GetPropertyChangedSignal(table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})), _igaObJyz()
-					_Hvlfnfxa.Content.Size = UDim2.new(1, -24, 0, _Hvlfnfxa.Content.TextBounds.Y)
-					_Hvlfnfxa.Size = UDim2.new(1, 0, 0, _Hvlfnfxa.Content.TextBounds.Y + 35)
+				AddConnection(ParagraphFrame.Content:GetPropertyChangedSignal("Text"), function()
+					ParagraphFrame.Content.Size = UDim2.new(1, -24, 0, ParagraphFrame.Content.TextBounds.Y)
+					ParagraphFrame.Size = UDim2.new(1, 0, 0, ParagraphFrame.Content.TextBounds.Y + 35)
 				end)
 
-				_Hvlfnfxa.Content.Text = Content
+				ParagraphFrame.Content.Text = Content
 
-				local _noNnxwzy = {}
-				_igaObJyz _noNnxwzy:Set(ToChange)
-					_Hvlfnfxa.Content.Text = ToChange
+				local ParagraphFunction = {}
+				function ParagraphFunction:Set(ToChange)
+					ParagraphFrame.Content.Text = ToChange
 				end
-				return _noNnxwzy
+				return ParagraphFunction
 			end    
-			_igaObJyz _vvyQwbex:AddButton(ButtonConfig)
+			function ElementFunction:AddButton(ButtonConfig)
 				ButtonConfig = ButtonConfig or {}
-				ButtonConfig.Name = ButtonConfig.Name or table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})
-				ButtonConfig.Callback = ButtonConfig.Callback or _igaObJyz() end
-				ButtonConfig.Icon = ButtonConfig.Icon or table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(51),string.char(57),string.char(52),string.char(52),string.char(55),string.char(48),string.char(51),string.char(53),string.char(56),string.char(55)})
+				ButtonConfig.Name = ButtonConfig.Name or "Button"
+				ButtonConfig.Callback = ButtonConfig.Callback or function() end
+				ButtonConfig.Icon = ButtonConfig.Icon or "rbxassetid://3944703587"
 
-				local _BcKVwiWD = {}
+				local Button = {}
 
-				local _LmwaZuvc = SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+				local Click = SetProps(MakeElement("Button"), {
 					Size = UDim2.new(1, 0, 1, 0)
 				})
 
-				local _VULtgWur = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 5), {
+				local ButtonFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 33),
 					Parent = ItemParent
 				}), {
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), ButtonConfig.Name, 15), {
+					AddThemeObject(SetProps(MakeElement("Label", ButtonConfig.Name, 15), {
 						Size = UDim2.new(1, -12, 1, 0),
 						Position = UDim2.new(0, 12, 0, 0),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), ButtonConfig.Icon), {
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(SetProps(MakeElement("Image", ButtonConfig.Icon), {
 						Size = UDim2.new(0, 20, 0, 20),
 						Position = UDim2.new(1, -30, 0, 7),
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(68),string.char(97),string.char(114),string.char(107)})),
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-					_LmwaZuvc
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+					}), "TextDark"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					Click
+				}), "Second")
 
-				AddConnection(_LmwaZuvc.MouseEnter, _igaObJyz()
-					_ZntjFyDM:Create(_VULtgWur, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 3)}):Play()
+				AddConnection(Click.MouseEnter, function()
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseLeave, _igaObJyz()
-					_ZntjFyDM:Create(_VULtgWur, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second}):Play()
+				AddConnection(Click.MouseLeave, function()
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseButton1Up, _igaObJyz()
-					_ZntjFyDM:Create(_VULtgWur, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 3)}):Play()
-					spawn(_igaObJyz()
+				AddConnection(Click.MouseButton1Up, function()
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+					spawn(function()
 						ButtonConfig.Callback()
 					end)
 				end)
 
-				AddConnection(_LmwaZuvc.MouseButton1Down, _igaObJyz()
-					_ZntjFyDM:Create(_VULtgWur, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 6, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 6, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 6)}):Play()
+				AddConnection(Click.MouseButton1Down, function()
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 6)}):Play()
 				end)
 
-				_igaObJyz _BcKVwiWD:Set(ButtonText)
-					_VULtgWur.Content.Text = ButtonText
+				function Button:Set(ButtonText)
+					ButtonFrame.Content.Text = ButtonText
 				end	
 
-				return _BcKVwiWD
+				return Button
 			end    
-			_igaObJyz _vvyQwbex:AddToggle(ToggleConfig)
+			function ElementFunction:AddToggle(ToggleConfig)
 				ToggleConfig = ToggleConfig or {}
-				ToggleConfig.Name = ToggleConfig.Name or table.concat({string.char(84),string.char(111),string.char(103),string.char(103),string.char(108),string.char(101)})
+				ToggleConfig.Name = ToggleConfig.Name or "Toggle"
 				ToggleConfig.Default = ToggleConfig.Default or false
-				ToggleConfig.Callback = ToggleConfig.Callback or _igaObJyz() end
-				ToggleConfig._lKgBCGmj = ToggleConfig._lKgBCGmj or Color3.fromRGB(9, 99, 195)
+				ToggleConfig.Callback = ToggleConfig.Callback or function() end
+				ToggleConfig.Color = ToggleConfig.Color or Color3.fromRGB(9, 99, 195)
 				ToggleConfig.Flag = ToggleConfig.Flag or nil
 				ToggleConfig.Save = ToggleConfig.Save or false
 
-				local _uXUTMuxl = {Value = ToggleConfig.Default, Save = ToggleConfig.Save}
+				local Toggle = {Value = ToggleConfig.Default, Save = ToggleConfig.Save}
 
-				local _LmwaZuvc = SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+				local Click = SetProps(MakeElement("Button"), {
 					Size = UDim2.new(1, 0, 1, 0)
 				})
 
-				local _TdannfJL = SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), ToggleConfig._lKgBCGmj, 0, 4), {
+				local ToggleBox = SetChildren(SetProps(MakeElement("RoundFrame", ToggleConfig.Color, 0, 4), {
 					Size = UDim2.new(0, 24, 0, 24),
 					Position = UDim2.new(1, -24, 0.5, 0),
 					AnchorPoint = Vector2.new(0.5, 0.5)
 				}), {
-					SetProps(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), {
-						_lKgBCGmj = ToggleConfig._lKgBCGmj,
-						Name = table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)}),
+					SetProps(MakeElement("Stroke"), {
+						Color = ToggleConfig.Color,
+						Name = "Stroke",
 						Transparency = 0.5
 					}),
-					SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(51),string.char(57),string.char(52),string.char(52),string.char(54),string.char(56),string.char(48),string.char(48),string.char(57),string.char(53)})), {
+					SetProps(MakeElement("Image", "rbxassetid://3944680095"), {
 						Size = UDim2.new(0, 20, 0, 20),
 						AnchorPoint = Vector2.new(0.5, 0.5),
 						Position = UDim2.new(0.5, 0, 0.5, 0),
 						ImageColor3 = Color3.fromRGB(255, 255, 255),
-						Name = table.concat({string.char(73),string.char(99),string.char(111)})
+						Name = "Ico"
 					}),
 				})
 
-				local _xCZVWKye = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 5), {
+				local ToggleFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 38),
 					Parent = ItemParent
 				}), {
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), ToggleConfig.Name, 15), {
+					AddThemeObject(SetProps(MakeElement("Label", ToggleConfig.Name, 15), {
 						Size = UDim2.new(1, -12, 1, 0),
 						Position = UDim2.new(0, 12, 0, 0),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-					_TdannfJL,
-					_LmwaZuvc
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					ToggleBox,
+					Click
+				}), "Second")
 
-				_igaObJyz _uXUTMuxl:Set(Value)
-					_uXUTMuxl.Value = Value
-					_ZntjFyDM:Create(_TdannfJL, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = _uXUTMuxl.Value and ToggleConfig._lKgBCGmj or _dFqoOKdR.Themes.Default.Divider}):Play()
-					_ZntjFyDM:Create(_TdannfJL._FDADrzRO, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {_lKgBCGmj = _uXUTMuxl.Value and ToggleConfig._lKgBCGmj or _dFqoOKdR.Themes.Default._FDADrzRO}):Play()
-					_ZntjFyDM:Create(_TdannfJL.Ico, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = _uXUTMuxl.Value and 0 or 1, Size = _uXUTMuxl.Value and UDim2.new(0, 20, 0, 20) or UDim2.new(0, 8, 0, 8)}):Play()
-					ToggleConfig.Callback(_uXUTMuxl.Value)
+				function Toggle:Set(Value)
+					Toggle.Value = Value
+					TweenService:Create(ToggleBox, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Toggle.Value and ToggleConfig.Color or OrionLib.Themes.Default.Divider}):Play()
+					TweenService:Create(ToggleBox.Stroke, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Color = Toggle.Value and ToggleConfig.Color or OrionLib.Themes.Default.Stroke}):Play()
+					TweenService:Create(ToggleBox.Ico, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = Toggle.Value and 0 or 1, Size = Toggle.Value and UDim2.new(0, 20, 0, 20) or UDim2.new(0, 8, 0, 8)}):Play()
+					ToggleConfig.Callback(Toggle.Value)
 				end    
 
-				_uXUTMuxl:Set(_uXUTMuxl.Value)
+				Toggle:Set(Toggle.Value)
 
-				AddConnection(_LmwaZuvc.MouseEnter, _igaObJyz()
-					_ZntjFyDM:Create(_xCZVWKye, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 3)}):Play()
+				AddConnection(Click.MouseEnter, function()
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseLeave, _igaObJyz()
-					_ZntjFyDM:Create(_xCZVWKye, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second}):Play()
+				AddConnection(Click.MouseLeave, function()
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseButton1Up, _igaObJyz()
-					_ZntjFyDM:Create(_xCZVWKye, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 3)}):Play()
+				AddConnection(Click.MouseButton1Up, function()
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
 					SaveCfg(game.GameId)
-					_uXUTMuxl:Set(not _uXUTMuxl.Value)
+					Toggle:Set(not Toggle.Value)
 				end)
 
-				AddConnection(_LmwaZuvc.MouseButton1Down, _igaObJyz()
-					_ZntjFyDM:Create(_xCZVWKye, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 6, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 6, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 6)}):Play()
+				AddConnection(Click.MouseButton1Down, function()
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 6)}):Play()
 				end)
 
 				if ToggleConfig.Flag then
-					_dFqoOKdR.Flags[ToggleConfig.Flag] = _uXUTMuxl
+					OrionLib.Flags[ToggleConfig.Flag] = Toggle
 				end	
-				return _uXUTMuxl
+				return Toggle
 			end  
-			_igaObJyz _vvyQwbex:AddSlider(SliderConfig)
+			function ElementFunction:AddSlider(SliderConfig)
 				SliderConfig = SliderConfig or {}
-				SliderConfig.Name = SliderConfig.Name or table.concat({string.char(83),string.char(108),string.char(105),string.char(100),string.char(101),string.char(114)})
+				SliderConfig.Name = SliderConfig.Name or "Slider"
 				SliderConfig.Min = SliderConfig.Min or 0
 				SliderConfig.Max = SliderConfig.Max or 100
 				SliderConfig.Increment = SliderConfig.Increment or 1
 				SliderConfig.Default = SliderConfig.Default or 50
-				SliderConfig.Callback = SliderConfig.Callback or _igaObJyz() end
+				SliderConfig.Callback = SliderConfig.Callback or function() end
 				SliderConfig.ValueName = SliderConfig.ValueName or ""
-				SliderConfig._lKgBCGmj = SliderConfig._lKgBCGmj or Color3.fromRGB(9, 149, 98)
+				SliderConfig.Color = SliderConfig.Color or Color3.fromRGB(9, 149, 98)
 				SliderConfig.Flag = SliderConfig.Flag or nil
 				SliderConfig.Save = SliderConfig.Save or false
 
-				local _nKBRAyAR = {Value = SliderConfig.Default, Save = SliderConfig.Save}
-				local _fmdaOBjA = false
+				local Slider = {Value = SliderConfig.Default, Save = SliderConfig.Save}
+				local Dragging = false
 
-				local _VgoumUah = SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), SliderConfig._lKgBCGmj, 0, 5), {
+				local SliderDrag = SetChildren(SetProps(MakeElement("RoundFrame", SliderConfig.Color, 0, 5), {
 					Size = UDim2.new(0, 0, 1, 0),
 					BackgroundTransparency = 0.3,
 					ClipsDescendants = true
 				}), {
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), table.concat({string.char(118),string.char(97),string.char(108),string.char(117),string.char(101)}), 13), {
+					AddThemeObject(SetProps(MakeElement("Label", "value", 13), {
 						Size = UDim2.new(1, -12, 0, 14),
 						Position = UDim2.new(0, 12, 0, 6),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(86),string.char(97),string.char(108),string.char(117),string.char(101)}),
+						Name = "Value",
 						TextTransparency = 0
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
+					}), "Text")
 				})
 
-				local _coJALnIv = SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), SliderConfig._lKgBCGmj, 0, 5), {
+				local SliderBar = SetChildren(SetProps(MakeElement("RoundFrame", SliderConfig.Color, 0, 5), {
 					Size = UDim2.new(1, -24, 0, 26),
 					Position = UDim2.new(0, 12, 0, 30),
 					BackgroundTransparency = 0.9
 				}), {
-					SetProps(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), {
-						_lKgBCGmj = SliderConfig._lKgBCGmj
+					SetProps(MakeElement("Stroke"), {
+						Color = SliderConfig.Color
 					}),
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), table.concat({string.char(118),string.char(97),string.char(108),string.char(117),string.char(101)}), 13), {
+					AddThemeObject(SetProps(MakeElement("Label", "value", 13), {
 						Size = UDim2.new(1, -12, 0, 14),
 						Position = UDim2.new(0, 12, 0, 6),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(86),string.char(97),string.char(108),string.char(117),string.char(101)}),
+						Name = "Value",
 						TextTransparency = 0.8
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-					_VgoumUah
+					}), "Text"),
+					SliderDrag
 				})
 
-				local _LauiitBo = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 4), {
+				local SliderFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 4), {
 					Size = UDim2.new(1, 0, 0, 65),
 					Parent = ItemParent
 				}), {
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), SliderConfig.Name, 15), {
+					AddThemeObject(SetProps(MakeElement("Label", SliderConfig.Name, 15), {
 						Size = UDim2.new(1, -12, 0, 14),
 						Position = UDim2.new(0, 12, 0, 10),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-					_coJALnIv
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					SliderBar
+				}), "Second")
 
-				_coJALnIv.InputBegan:Connect(_igaObJyz(Input)
+				SliderBar.InputBegan:Connect(function(Input)
 					if Input.UserInputType == Enum.UserInputType.MouseButton1 then 
-						_fmdaOBjA = true 
+						Dragging = true 
 					end 
 				end)
-				_coJALnIv.InputEnded:Connect(_igaObJyz(Input) 
+				SliderBar.InputEnded:Connect(function(Input) 
 					if Input.UserInputType == Enum.UserInputType.MouseButton1 then 
-						_fmdaOBjA = false 
+						Dragging = false 
 					end 
 				end)
 
-				_Iokakucr.InputChanged:Connect(_igaObJyz(Input)
-					if _fmdaOBjA and Input.UserInputType == Enum.UserInputType.MouseMovement then 
-						local _FcSUXYJv = math.clamp((Input.Position.X - _coJALnIv.AbsolutePosition.X) / _coJALnIv.AbsoluteSize.X, 0, 1)
-						_nKBRAyAR:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * _FcSUXYJv)) 
+				UserInputService.InputChanged:Connect(function(Input)
+					if Dragging and Input.UserInputType == Enum.UserInputType.MouseMovement then 
+						local SizeScale = math.clamp((Input.Position.X - SliderBar.AbsolutePosition.X) / SliderBar.AbsoluteSize.X, 0, 1)
+						Slider:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale)) 
 						SaveCfg(game.GameId)
 					end
 				end)
 
-				_igaObJyz _nKBRAyAR:Set(Value)
+				function Slider:Set(Value)
 					self.Value = math.clamp(Round(Value, SliderConfig.Increment), SliderConfig.Min, SliderConfig.Max)
-					_ZntjFyDM:Create(_VgoumUah,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.fromScale((self.Value - SliderConfig.Min) / (SliderConfig.Max - SliderConfig.Min), 1)}):Play()
-					_coJALnIv.Value.Text = tostring(self.Value) .. table.concat({string.char(32)}) .. SliderConfig.ValueName
-					_VgoumUah.Value.Text = tostring(self.Value) .. table.concat({string.char(32)}) .. SliderConfig.ValueName
+					TweenService:Create(SliderDrag,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.fromScale((self.Value - SliderConfig.Min) / (SliderConfig.Max - SliderConfig.Min), 1)}):Play()
+					SliderBar.Value.Text = tostring(self.Value) .. " " .. SliderConfig.ValueName
+					SliderDrag.Value.Text = tostring(self.Value) .. " " .. SliderConfig.ValueName
 					SliderConfig.Callback(self.Value)
 				end      
 
-				_nKBRAyAR:Set(_nKBRAyAR.Value)
+				Slider:Set(Slider.Value)
 				if SliderConfig.Flag then				
-					_dFqoOKdR.Flags[SliderConfig.Flag] = _nKBRAyAR
+					OrionLib.Flags[SliderConfig.Flag] = Slider
 				end
-				return _nKBRAyAR
+				return Slider
 			end  
-			_igaObJyz _vvyQwbex:AddDropdown(DropdownConfig)
+			function ElementFunction:AddDropdown(DropdownConfig)
 				DropdownConfig = DropdownConfig or {}
-				DropdownConfig.Name = DropdownConfig.Name or table.concat({string.char(68),string.char(114),string.char(111),string.char(112),string.char(100),string.char(111),string.char(119),string.char(110)})
+				DropdownConfig.Name = DropdownConfig.Name or "Dropdown"
 				DropdownConfig.Options = DropdownConfig.Options or {}
 				DropdownConfig.Default = DropdownConfig.Default or ""
-				DropdownConfig.Callback = DropdownConfig.Callback or _igaObJyz() end
+				DropdownConfig.Callback = DropdownConfig.Callback or function() end
 				DropdownConfig.Flag = DropdownConfig.Flag or nil
 				DropdownConfig.Save = DropdownConfig.Save or false
 
-				local _iayqqvym = {Value = DropdownConfig.Default, Options = DropdownConfig.Options, Buttons = {}, Toggled = false, Type = table.concat({string.char(68),string.char(114),string.char(111),string.char(112),string.char(100),string.char(111),string.char(119),string.char(110)}), Save = DropdownConfig.Save}
-				local _GczbvAzz = 5
+				local Dropdown = {Value = DropdownConfig.Default, Options = DropdownConfig.Options, Buttons = {}, Toggled = false, Type = "Dropdown", Save = DropdownConfig.Save}
+				local MaxElements = 5
 
-				if not table.find(_iayqqvym.Options, _iayqqvym.Value) then
-					_iayqqvym.Value = table.concat({string.char(46),string.char(46),string.char(46)})
+				if not table.find(Dropdown.Options, Dropdown.Value) then
+					Dropdown.Value = "..."
 				end
 
-				local _SklHZsYI = MakeElement(table.concat({string.char(76),string.char(105),string.char(115),string.char(116)}))
+				local DropdownList = MakeElement("List")
 
-				local _XVtGMsuY = AddThemeObject(SetProps(SetChildren(MakeElement(table.concat({string.char(83),string.char(99),string.char(114),string.char(111),string.char(108),string.char(108),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(40, 40, 40), 4), {
-					_SklHZsYI
+				local DropdownContainer = AddThemeObject(SetProps(SetChildren(MakeElement("ScrollFrame", Color3.fromRGB(40, 40, 40), 4), {
+					DropdownList
 				}), {
 					Parent = ItemParent,
 					Position = UDim2.new(0, 0, 0, 38),
 					Size = UDim2.new(1, 0, 1, -38),
 					ClipsDescendants = true
-				}), table.concat({string.char(68),string.char(105),string.char(118),string.char(105),string.char(100),string.char(101),string.char(114)}))
+				}), "Divider")
 
-				local _LmwaZuvc = SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+				local Click = SetProps(MakeElement("Button"), {
 					Size = UDim2.new(1, 0, 1, 0)
 				})
 
-				local _eWeBpHJW = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 5), {
+				local DropdownFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 38),
 					Parent = ItemParent,
 					ClipsDescendants = true
 				}), {
-					_XVtGMsuY,
-					SetProps(SetChildren(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
-						AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), DropdownConfig.Name, 15), {
+					DropdownContainer,
+					SetProps(SetChildren(MakeElement("TFrame"), {
+						AddThemeObject(SetProps(MakeElement("Label", DropdownConfig.Name, 15), {
 							Size = UDim2.new(1, -12, 1, 0),
 							Position = UDim2.new(0, 12, 0, 0),
 							Font = Enum.Font.GothamBold,
-							Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
-						}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-						AddThemeObject(SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(55),string.char(48),string.char(55),string.char(50),string.char(55),string.char(48),string.char(54),string.char(55),string.char(57),string.char(54)})), {
+							Name = "Content"
+						}), "Text"),
+						AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072706796"), {
 							Size = UDim2.new(0, 20, 0, 20),
 							AnchorPoint = Vector2.new(0, 0.5),
 							Position = UDim2.new(1, -30, 0.5, 0),
 							ImageColor3 = Color3.fromRGB(240, 240, 240),
-							Name = table.concat({string.char(73),string.char(99),string.char(111)})
-						}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(68),string.char(97),string.char(114),string.char(107)})),
-						AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), table.concat({string.char(83),string.char(101),string.char(108),string.char(101),string.char(99),string.char(116),string.char(101),string.char(100)}), 13), {
+							Name = "Ico"
+						}), "TextDark"),
+						AddThemeObject(SetProps(MakeElement("Label", "Selected", 13), {
 							Size = UDim2.new(1, -40, 1, 0),
 							Font = Enum.Font.Gotham,
-							Name = table.concat({string.char(83),string.char(101),string.char(108),string.char(101),string.char(99),string.char(116),string.char(101),string.char(100)}),
+							Name = "Selected",
 							TextXAlignment = Enum.TextXAlignment.Right
-						}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(68),string.char(97),string.char(114),string.char(107)})),
-						AddThemeObject(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+						}), "TextDark"),
+						AddThemeObject(SetProps(MakeElement("Frame"), {
 							Size = UDim2.new(1, 0, 0, 1),
 							Position = UDim2.new(0, 0, 1, -1),
-							Name = table.concat({string.char(76),string.char(105),string.char(110),string.char(101)}),
+							Name = "Line",
 							Visible = false
-						}), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), 
-						_LmwaZuvc
+						}), "Stroke"), 
+						Click
 					}), {
 						Size = UDim2.new(1, 0, 0, 38),
 						ClipsDescendants = true,
-						Name = table.concat({string.char(70)})
+						Name = "F"
 					}),
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-					MakeElement(table.concat({string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}))
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					MakeElement("Corner")
+				}), "Second")
 
-				AddConnection(_SklHZsYI:GetPropertyChangedSignal(table.concat({string.char(65),string.char(98),string.char(115),string.char(111),string.char(108),string.char(117),string.char(116),string.char(101),string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116),string.char(83),string.char(105),string.char(122),string.char(101)})), _igaObJyz()
-					_XVtGMsuY.CanvasSize = UDim2.new(0, 0, 0, _SklHZsYI.AbsoluteContentSize.Y)
+				AddConnection(DropdownList:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+					DropdownContainer.CanvasSize = UDim2.new(0, 0, 0, DropdownList.AbsoluteContentSize.Y)
 				end)  
 
-				local _igaObJyz AddOptions(Options)
+				local function AddOptions(Options)
 					for _, Option in pairs(Options) do
-						local _oyimYIMA = AddThemeObject(SetProps(SetChildren(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)}), Color3.fromRGB(40, 40, 40)), {
-							MakeElement(table.concat({string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}), 0, 6),
-							AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), Option, 13, 0.4), {
+						local OptionBtn = AddThemeObject(SetProps(SetChildren(MakeElement("Button", Color3.fromRGB(40, 40, 40)), {
+							MakeElement("Corner", 0, 6),
+							AddThemeObject(SetProps(MakeElement("Label", Option, 13, 0.4), {
 								Position = UDim2.new(0, 8, 0, 0),
 								Size = UDim2.new(1, -8, 1, 0),
-								Name = table.concat({string.char(84),string.char(105),string.char(116),string.char(108),string.char(101)})
-							}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
+								Name = "Title"
+							}), "Text")
 						}), {
-							Parent = _XVtGMsuY,
+							Parent = DropdownContainer,
 							Size = UDim2.new(1, 0, 0, 28),
 							BackgroundTransparency = 1,
 							ClipsDescendants = true
-						}), table.concat({string.char(68),string.char(105),string.char(118),string.char(105),string.char(100),string.char(101),string.char(114)}))
+						}), "Divider")
 
-						AddConnection(_oyimYIMA.MouseButton1Click, _igaObJyz()
-							_iayqqvym:Set(Option)
+						AddConnection(OptionBtn.MouseButton1Click, function()
+							Dropdown:Set(Option)
 							SaveCfg(game.GameId)
 						end)
 
-						_iayqqvym.Buttons[Option] = _oyimYIMA
+						Dropdown.Buttons[Option] = OptionBtn
 					end
 				end	
 
-				_igaObJyz _iayqqvym:Refresh(Options, Delete)
+				function Dropdown:Refresh(Options, Delete)
 					if Delete then
-						for _,v in pairs(_iayqqvym.Buttons) do
+						for _,v in pairs(Dropdown.Buttons) do
 							v:Destroy()
 						end    
-						table.clear(_iayqqvym.Options)
-						table.clear(_iayqqvym.Buttons)
+						table.clear(Dropdown.Options)
+						table.clear(Dropdown.Buttons)
 					end
-					_iayqqvym.Options = Options
-					AddOptions(_iayqqvym.Options)
+					Dropdown.Options = Options
+					AddOptions(Dropdown.Options)
 				end  
 
-				_igaObJyz _iayqqvym:Set(Value)
-					if not table.find(_iayqqvym.Options, Value) then
-						_iayqqvym.Value = table.concat({string.char(46),string.char(46),string.char(46)})
-						_eWeBpHJW.F.Selected.Text = _iayqqvym.Value
-						for _, v in pairs(_iayqqvym.Buttons) do
-							_ZntjFyDM:Create(v,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
-							_ZntjFyDM:Create(v.Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.4}):Play()
+				function Dropdown:Set(Value)
+					if not table.find(Dropdown.Options, Value) then
+						Dropdown.Value = "..."
+						DropdownFrame.F.Selected.Text = Dropdown.Value
+						for _, v in pairs(Dropdown.Buttons) do
+							TweenService:Create(v,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
+							TweenService:Create(v.Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.4}):Play()
 						end	
 						return
 					end
 
-					_iayqqvym.Value = Value
-					_eWeBpHJW.F.Selected.Text = _iayqqvym.Value
+					Dropdown.Value = Value
+					DropdownFrame.F.Selected.Text = Dropdown.Value
 
-					for _, v in pairs(_iayqqvym.Buttons) do
-						_ZntjFyDM:Create(v,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
-						_ZntjFyDM:Create(v.Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.4}):Play()
+					for _, v in pairs(Dropdown.Buttons) do
+						TweenService:Create(v,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
+						TweenService:Create(v.Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.4}):Play()
 					end	
-					_ZntjFyDM:Create(_iayqqvym.Buttons[Value],TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 0}):Play()
-					_ZntjFyDM:Create(_iayqqvym.Buttons[Value].Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0}):Play()
-					return DropdownConfig.Callback(_iayqqvym.Value)
+					TweenService:Create(Dropdown.Buttons[Value],TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 0}):Play()
+					TweenService:Create(Dropdown.Buttons[Value].Title,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0}):Play()
+					return DropdownConfig.Callback(Dropdown.Value)
 				end
 
-				AddConnection(_LmwaZuvc.MouseButton1Click, _igaObJyz()
-					_iayqqvym.Toggled = not _iayqqvym.Toggled
-					_eWeBpHJW.F.Line.Visible = _iayqqvym.Toggled
-					_ZntjFyDM:Create(_eWeBpHJW.F.Ico,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Rotation = _iayqqvym.Toggled and 180 or 0}):Play()
-					if #_iayqqvym.Options > _GczbvAzz then
-						_ZntjFyDM:Create(_eWeBpHJW,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = _iayqqvym.Toggled and UDim2.new(1, 0, 0, 38 + (_GczbvAzz * 28)) or UDim2.new(1, 0, 0, 38)}):Play()
+				AddConnection(Click.MouseButton1Click, function()
+					Dropdown.Toggled = not Dropdown.Toggled
+					DropdownFrame.F.Line.Visible = Dropdown.Toggled
+					TweenService:Create(DropdownFrame.F.Ico,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Rotation = Dropdown.Toggled and 180 or 0}):Play()
+					if #Dropdown.Options > MaxElements then
+						TweenService:Create(DropdownFrame,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = Dropdown.Toggled and UDim2.new(1, 0, 0, 38 + (MaxElements * 28)) or UDim2.new(1, 0, 0, 38)}):Play()
 					else
-						_ZntjFyDM:Create(_eWeBpHJW,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = _iayqqvym.Toggled and UDim2.new(1, 0, 0, _SklHZsYI.AbsoluteContentSize.Y + 38) or UDim2.new(1, 0, 0, 38)}):Play()
+						TweenService:Create(DropdownFrame,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = Dropdown.Toggled and UDim2.new(1, 0, 0, DropdownList.AbsoluteContentSize.Y + 38) or UDim2.new(1, 0, 0, 38)}):Play()
 					end
 				end)
 
-				_iayqqvym:Refresh(_iayqqvym.Options, false)
-				_iayqqvym:Set(_iayqqvym.Value)
+				Dropdown:Refresh(Dropdown.Options, false)
+				Dropdown:Set(Dropdown.Value)
 				if DropdownConfig.Flag then				
-					_dFqoOKdR.Flags[DropdownConfig.Flag] = _iayqqvym
+					OrionLib.Flags[DropdownConfig.Flag] = Dropdown
 				end
-				return _iayqqvym
+				return Dropdown
 			end
-			_igaObJyz _vvyQwbex:AddBind(BindConfig)
-				BindConfig.Name = BindConfig.Name or table.concat({string.char(66),string.char(105),string.char(110),string.char(100)})
+			function ElementFunction:AddBind(BindConfig)
+				BindConfig.Name = BindConfig.Name or "Bind"
 				BindConfig.Default = BindConfig.Default or Enum.KeyCode.Unknown
 				BindConfig.Hold = BindConfig.Hold or false
-				BindConfig.Callback = BindConfig.Callback or _igaObJyz() end
+				BindConfig.Callback = BindConfig.Callback or function() end
 				BindConfig.Flag = BindConfig.Flag or nil
 				BindConfig.Save = BindConfig.Save or false
 
-				local _LrjPtdoV = {Value, Binding = false, Type = table.concat({string.char(66),string.char(105),string.char(110),string.char(100)}), Save = BindConfig.Save}
-				local _ZtJgYViR = false
+				local Bind = {Value, Binding = false, Type = "Bind", Save = BindConfig.Save}
+				local Holding = false
 
-				local _LmwaZuvc = SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+				local Click = SetProps(MakeElement("Button"), {
 					Size = UDim2.new(1, 0, 1, 0)
 				})
 
-				local _pouDNuRA = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 4), {
+				local BindBox = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 4), {
 					Size = UDim2.new(0, 24, 0, 24),
 					Position = UDim2.new(1, -12, 0.5, 0),
 					AnchorPoint = Vector2.new(1, 0.5)
 				}), {
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), BindConfig.Name, 14), {
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					AddThemeObject(SetProps(MakeElement("Label", BindConfig.Name, 14), {
 						Size = UDim2.new(1, 0, 1, 0),
 						Font = Enum.Font.GothamBold,
 						TextXAlignment = Enum.TextXAlignment.Center,
-						Name = table.concat({string.char(86),string.char(97),string.char(108),string.char(117),string.char(101)})
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
-				}), table.concat({string.char(77),string.char(97),string.char(105),string.char(110)}))
+						Name = "Value"
+					}), "Text")
+				}), "Main")
 
-				local _IJKawrVf = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 5), {
+				local BindFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 38),
 					Parent = ItemParent
 				}), {
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), BindConfig.Name, 15), {
+					AddThemeObject(SetProps(MakeElement("Label", BindConfig.Name, 15), {
 						Size = UDim2.new(1, -12, 1, 0),
 						Position = UDim2.new(0, 12, 0, 0),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-					_pouDNuRA,
-					_LmwaZuvc
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					BindBox,
+					Click
+				}), "Second")
 
-				AddConnection(_pouDNuRA.Value:GetPropertyChangedSignal(table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})), _igaObJyz()
-					--_pouDNuRA.Size = UDim2.new(0, _pouDNuRA.Value.TextBounds.X + 16, 0, 24)
-					_ZntjFyDM:Create(_pouDNuRA, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, _pouDNuRA.Value.TextBounds.X + 16, 0, 24)}):Play()
+				AddConnection(BindBox.Value:GetPropertyChangedSignal("Text"), function()
+					--BindBox.Size = UDim2.new(0, BindBox.Value.TextBounds.X + 16, 0, 24)
+					TweenService:Create(BindBox, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, BindBox.Value.TextBounds.X + 16, 0, 24)}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.InputEnded, _igaObJyz(Input)
+				AddConnection(Click.InputEnded, function(Input)
 					if Input.UserInputType == Enum.UserInputType.MouseButton1 then
-						if _LrjPtdoV.Binding then return end
-						_LrjPtdoV.Binding = true
-						_pouDNuRA.Value.Text = ""
+						if Bind.Binding then return end
+						Bind.Binding = true
+						BindBox.Value.Text = ""
 					end
 				end)
 
-				AddConnection(_Iokakucr.InputBegan, _igaObJyz(Input)
-					if _Iokakucr:GetFocusedTextBox() then return end
-					if (Input.KeyCode.Name == _LrjPtdoV.Value or Input.UserInputType.Name == _LrjPtdoV.Value) and not _LrjPtdoV.Binding then
+				AddConnection(UserInputService.InputBegan, function(Input)
+					if UserInputService:GetFocusedTextBox() then return end
+					if (Input.KeyCode.Name == Bind.Value or Input.UserInputType.Name == Bind.Value) and not Bind.Binding then
 						if BindConfig.Hold then
-							_ZtJgYViR = true
-							BindConfig.Callback(_ZtJgYViR)
+							Holding = true
+							BindConfig.Callback(Holding)
 						else
 							BindConfig.Callback()
 						end
-					elseif _LrjPtdoV.Binding then
-						local _rMoPOuDl
-						pcall(_igaObJyz()
-							if not CheckKey(_tNmKcUwO, Input.KeyCode) then
-								_rMoPOuDl = Input.KeyCode
+					elseif Bind.Binding then
+						local Key
+						pcall(function()
+							if not CheckKey(BlacklistedKeys, Input.KeyCode) then
+								Key = Input.KeyCode
 							end
 						end)
-						pcall(_igaObJyz()
-							if CheckKey(_ybnKHpte, Input.UserInputType) and not _rMoPOuDl then
-								_rMoPOuDl = Input.UserInputType
+						pcall(function()
+							if CheckKey(WhitelistedMouse, Input.UserInputType) and not Key then
+								Key = Input.UserInputType
 							end
 						end)
-						_rMoPOuDl = _rMoPOuDl or _LrjPtdoV.Value
-						_LrjPtdoV:Set(_rMoPOuDl)
+						Key = Key or Bind.Value
+						Bind:Set(Key)
 						SaveCfg(game.GameId)
 					end
 				end)
 
-				AddConnection(_Iokakucr.InputEnded, _igaObJyz(Input)
-					if Input.KeyCode.Name == _LrjPtdoV.Value or Input.UserInputType.Name == _LrjPtdoV.Value then
-						if BindConfig.Hold and _ZtJgYViR then
-							_ZtJgYViR = false
-							BindConfig.Callback(_ZtJgYViR)
+				AddConnection(UserInputService.InputEnded, function(Input)
+					if Input.KeyCode.Name == Bind.Value or Input.UserInputType.Name == Bind.Value then
+						if BindConfig.Hold and Holding then
+							Holding = false
+							BindConfig.Callback(Holding)
 						end
 					end
 				end)
 
-				AddConnection(_LmwaZuvc.MouseEnter, _igaObJyz()
-					_ZntjFyDM:Create(_IJKawrVf, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 3)}):Play()
+				AddConnection(Click.MouseEnter, function()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseLeave, _igaObJyz()
-					_ZntjFyDM:Create(_IJKawrVf, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second}):Play()
+				AddConnection(Click.MouseLeave, function()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseButton1Up, _igaObJyz()
-					_ZntjFyDM:Create(_IJKawrVf, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 3)}):Play()
+				AddConnection(Click.MouseButton1Up, function()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseButton1Down, _igaObJyz()
-					_ZntjFyDM:Create(_IJKawrVf, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 6, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 6, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 6)}):Play()
+				AddConnection(Click.MouseButton1Down, function()
+					TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 6)}):Play()
 				end)
 
-				_igaObJyz _LrjPtdoV:Set(_rMoPOuDl)
-					_LrjPtdoV.Binding = false
-					_LrjPtdoV.Value = _rMoPOuDl or _LrjPtdoV.Value
-					_LrjPtdoV.Value = _LrjPtdoV.Value.Name or _LrjPtdoV.Value
-					_pouDNuRA.Value.Text = _LrjPtdoV.Value
+				function Bind:Set(Key)
+					Bind.Binding = false
+					Bind.Value = Key or Bind.Value
+					Bind.Value = Bind.Value.Name or Bind.Value
+					BindBox.Value.Text = Bind.Value
 				end
 
-				_LrjPtdoV:Set(BindConfig.Default)
+				Bind:Set(BindConfig.Default)
 				if BindConfig.Flag then				
-					_dFqoOKdR.Flags[BindConfig.Flag] = _LrjPtdoV
+					OrionLib.Flags[BindConfig.Flag] = Bind
 				end
-				return _LrjPtdoV
+				return Bind
 			end  
-			_igaObJyz _vvyQwbex:AddTextbox(TextboxConfig)
+			function ElementFunction:AddTextbox(TextboxConfig)
 				TextboxConfig = TextboxConfig or {}
-				TextboxConfig.Name = TextboxConfig.Name or table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(98),string.char(111),string.char(120)})
+				TextboxConfig.Name = TextboxConfig.Name or "Textbox"
 				TextboxConfig.Default = TextboxConfig.Default or ""
 				TextboxConfig.TextDisappear = TextboxConfig.TextDisappear or false
-				TextboxConfig.Callback = TextboxConfig.Callback or _igaObJyz() end
+				TextboxConfig.Callback = TextboxConfig.Callback or function() end
 
-				local _LmwaZuvc = SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+				local Click = SetProps(MakeElement("Button"), {
 					Size = UDim2.new(1, 0, 1, 0)
 				})
 
-				local _dnGJywnA = AddThemeObject(Create(table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(66),string.char(111),string.char(120)}), {
+				local TextboxActual = AddThemeObject(Create("TextBox", {
 					Size = UDim2.new(1, 0, 1, 0),
 					BackgroundTransparency = 1,
 					TextColor3 = Color3.fromRGB(255, 255, 255),
 					PlaceholderColor3 = Color3.fromRGB(210,210,210),
-					PlaceholderText = table.concat({string.char(73),string.char(110),string.char(112),string.char(117),string.char(116)}),
+					PlaceholderText = "Input",
 					Font = Enum.Font.GothamSemibold,
 					TextXAlignment = Enum.TextXAlignment.Center,
 					TextSize = 14,
 					ClearTextOnFocus = false
-				}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
+				}), "Text")
 
-				local _MBLfIMQn = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 4), {
+				local TextContainer = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 4), {
 					Size = UDim2.new(0, 24, 0, 24),
 					Position = UDim2.new(1, -12, 0.5, 0),
 					AnchorPoint = Vector2.new(1, 0.5)
 				}), {
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-					_dnGJywnA
-				}), table.concat({string.char(77),string.char(97),string.char(105),string.char(110)}))
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					TextboxActual
+				}), "Main")
 
 
-				local _tCsfcMhp = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 5), {
+				local TextboxFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 38),
 					Parent = ItemParent
 				}), {
-					AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), TextboxConfig.Name, 15), {
+					AddThemeObject(SetProps(MakeElement("Label", TextboxConfig.Name, 15), {
 						Size = UDim2.new(1, -12, 1, 0),
 						Position = UDim2.new(0, 12, 0, 0),
 						Font = Enum.Font.GothamBold,
-						Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
-					}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-					_MBLfIMQn,
-					_LmwaZuvc
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					TextContainer,
+					Click
+				}), "Second")
 
-				AddConnection(_dnGJywnA:GetPropertyChangedSignal(table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})), _igaObJyz()
-					--_MBLfIMQn.Size = UDim2.new(0, _dnGJywnA.TextBounds.X + 16, 0, 24)
-					_ZntjFyDM:Create(_MBLfIMQn, TweenInfo.new(0.45, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, _dnGJywnA.TextBounds.X + 16, 0, 24)}):Play()
+				AddConnection(TextboxActual:GetPropertyChangedSignal("Text"), function()
+					--TextContainer.Size = UDim2.new(0, TextboxActual.TextBounds.X + 16, 0, 24)
+					TweenService:Create(TextContainer, TweenInfo.new(0.45, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, TextboxActual.TextBounds.X + 16, 0, 24)}):Play()
 				end)
 
-				AddConnection(_dnGJywnA.FocusLost, _igaObJyz()
-					TextboxConfig.Callback(_dnGJywnA.Text)
+				AddConnection(TextboxActual.FocusLost, function()
+					TextboxConfig.Callback(TextboxActual.Text)
 					if TextboxConfig.TextDisappear then
-						_dnGJywnA.Text = ""
+						TextboxActual.Text = ""
 					end	
 				end)
 
-				_dnGJywnA.Text = TextboxConfig.Default
+				TextboxActual.Text = TextboxConfig.Default
 
-				AddConnection(_LmwaZuvc.MouseEnter, _igaObJyz()
-					_ZntjFyDM:Create(_tCsfcMhp, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 3)}):Play()
+				AddConnection(Click.MouseEnter, function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseLeave, _igaObJyz()
-					_ZntjFyDM:Create(_tCsfcMhp, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second}):Play()
+				AddConnection(Click.MouseLeave, function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Second}):Play()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseButton1Up, _igaObJyz()
-					_ZntjFyDM:Create(_tCsfcMhp, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 3, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 3)}):Play()
-					_dnGJywnA:CaptureFocus()
+				AddConnection(Click.MouseButton1Up, function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
+					TextboxActual:CaptureFocus()
 				end)
 
-				AddConnection(_LmwaZuvc.MouseButton1Down, _igaObJyz()
-					_ZntjFyDM:Create(_tCsfcMhp, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(_dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.R * 255 + 6, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.G * 255 + 6, _dFqoOKdR.Themes[_dFqoOKdR.SelectedTheme].Second.B * 255 + 6)}):Play()
+				AddConnection(Click.MouseButton1Down, function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 6, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 6)}):Play()
 				end)
 			end 
-			_igaObJyz _vvyQwbex:AddColorpicker(ColorpickerConfig)
+			function ElementFunction:AddColorpicker(ColorpickerConfig)
 				ColorpickerConfig = ColorpickerConfig or {}
-				ColorpickerConfig.Name = ColorpickerConfig.Name or table.concat({string.char(67),string.char(111),string.char(108),string.char(111),string.char(114),string.char(112),string.char(105),string.char(99),string.char(107),string.char(101),string.char(114)})
+				ColorpickerConfig.Name = ColorpickerConfig.Name or "Colorpicker"
 				ColorpickerConfig.Default = ColorpickerConfig.Default or Color3.fromRGB(255,255,255)
-				ColorpickerConfig.Callback = ColorpickerConfig.Callback or _igaObJyz() end
+				ColorpickerConfig.Callback = ColorpickerConfig.Callback or function() end
 				ColorpickerConfig.Flag = ColorpickerConfig.Flag or nil
 				ColorpickerConfig.Save = ColorpickerConfig.Save or false
 
-				local _BEUTDpjh, ColorS, ColorV = 1, 1, 1
-				local _AAbKvAHV = {Value = ColorpickerConfig.Default, Toggled = false, Type = table.concat({string.char(67),string.char(111),string.char(108),string.char(111),string.char(114),string.char(112),string.char(105),string.char(99),string.char(107),string.char(101),string.char(114)}), Save = ColorpickerConfig.Save}
+				local ColorH, ColorS, ColorV = 1, 1, 1
+				local Colorpicker = {Value = ColorpickerConfig.Default, Toggled = false, Type = "Colorpicker", Save = ColorpickerConfig.Save}
 
-				local _mlheFzVF = Create(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), {
+				local ColorSelection = Create("ImageLabel", {
 					Size = UDim2.new(0, 18, 0, 18),
-					Position = UDim2.new(select(3, Color3.toHSV(_AAbKvAHV.Value))),
+					Position = UDim2.new(select(3, Color3.toHSV(Colorpicker.Value))),
 					ScaleType = Enum.ScaleType.Fit,
 					AnchorPoint = Vector2.new(0.5, 0.5),
 					BackgroundTransparency = 1,
-					_xpTklmuy = table.concat({string.char(104),string.char(116),string.char(116),string.char(112),string.char(58),string.char(47),string.char(47),string.char(119),string.char(119),string.char(119),string.char(46),string.char(114),string.char(111),string.char(98),string.char(108),string.char(111),string.char(120),string.char(46),string.char(99),string.char(111),string.char(109),string.char(47),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(47),string.char(63),string.char(105),string.char(100),string.char(61),string.char(52),string.char(56),string.char(48),string.char(53),string.char(54),string.char(51),string.char(57),string.char(48),string.char(48),string.char(48)})
+					Image = "http://www.roblox.com/asset/?id=4805639000"
 				})
 
-				local _kgZQrCOe = Create(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), {
+				local HueSelection = Create("ImageLabel", {
 					Size = UDim2.new(0, 18, 0, 18),
-					Position = UDim2.new(0.5, 0, 1 - select(1, Color3.toHSV(_AAbKvAHV.Value))),
+					Position = UDim2.new(0.5, 0, 1 - select(1, Color3.toHSV(Colorpicker.Value))),
 					ScaleType = Enum.ScaleType.Fit,
 					AnchorPoint = Vector2.new(0.5, 0.5),
 					BackgroundTransparency = 1,
-					_xpTklmuy = table.concat({string.char(104),string.char(116),string.char(116),string.char(112),string.char(58),string.char(47),string.char(47),string.char(119),string.char(119),string.char(119),string.char(46),string.char(114),string.char(111),string.char(98),string.char(108),string.char(111),string.char(120),string.char(46),string.char(99),string.char(111),string.char(109),string.char(47),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(47),string.char(63),string.char(105),string.char(100),string.char(61),string.char(52),string.char(56),string.char(48),string.char(53),string.char(54),string.char(51),string.char(57),string.char(48),string.char(48),string.char(48)})
+					Image = "http://www.roblox.com/asset/?id=4805639000"
 				})
 
-				local _lKgBCGmj = Create(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101),string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), {
+				local Color = Create("ImageLabel", {
 					Size = UDim2.new(1, -25, 1, 0),
 					Visible = false,
-					_xpTklmuy = table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(52),string.char(49),string.char(53),string.char(53),string.char(56),string.char(48),string.char(49),string.char(50),string.char(53),string.char(50)})
+					Image = "rbxassetid://4155801252"
 				}, {
-					Create(table.concat({string.char(85),string.char(73),string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}), {CornerRadius = UDim.new(0, 5)}),
-					_mlheFzVF
+					Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
+					ColorSelection
 				})
 
-				local _DlwIuawN = Create(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), {
+				local Hue = Create("Frame", {
 					Size = UDim2.new(0, 20, 1, 0),
 					Position = UDim2.new(1, -20, 0, 0),
 					Visible = false
 				}, {
-					Create(table.concat({string.char(85),string.char(73),string.char(71),string.char(114),string.char(97),string.char(100),string.char(105),string.char(101),string.char(110),string.char(116)}), {Rotation = 270, _lKgBCGmj = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(21, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(0, 17, 255)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 0, 251)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))},}),
-					Create(table.concat({string.char(85),string.char(73),string.char(67),string.char(111),string.char(114),string.char(110),string.char(101),string.char(114)}), {CornerRadius = UDim.new(0, 5)}),
-					_kgZQrCOe
+					Create("UIGradient", {Rotation = 270, Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(21, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(0, 17, 255)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 0, 251)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))},}),
+					Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
+					HueSelection
 				})
 
-				local _UeHqBAyO = Create(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), {
+				local ColorpickerContainer = Create("Frame", {
 					Position = UDim2.new(0, 0, 0, 32),
 					Size = UDim2.new(1, 0, 1, -32),
 					BackgroundTransparency = 1,
 					ClipsDescendants = true
 				}, {
-					_DlwIuawN,
-					_lKgBCGmj,
-					Create(table.concat({string.char(85),string.char(73),string.char(80),string.char(97),string.char(100),string.char(100),string.char(105),string.char(110),string.char(103)}), {
+					Hue,
+					Color,
+					Create("UIPadding", {
 						PaddingLeft = UDim.new(0, 35),
 						PaddingRight = UDim.new(0, 35),
 						PaddingBottom = UDim.new(0, 10),
@@ -1509,83 +1507,83 @@ _igaObJyz _dFqoOKdR:MakeWindow(WindowConfig)
 					})
 				})
 
-				local _LmwaZuvc = SetProps(MakeElement(table.concat({string.char(66),string.char(117),string.char(116),string.char(116),string.char(111),string.char(110)})), {
+				local Click = SetProps(MakeElement("Button"), {
 					Size = UDim2.new(1, 0, 1, 0)
 				})
 
-				local _RyEUCClk = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 4), {
+				local ColorpickerBox = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 4), {
 					Size = UDim2.new(0, 24, 0, 24),
 					Position = UDim2.new(1, -12, 0.5, 0),
 					AnchorPoint = Vector2.new(1, 0.5)
 				}), {
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)}))
-				}), table.concat({string.char(77),string.char(97),string.char(105),string.char(110)}))
+					AddThemeObject(MakeElement("Stroke"), "Stroke")
+				}), "Main")
 
-				local _BUgjlMUY = AddThemeObject(SetChildren(SetProps(MakeElement(table.concat({string.char(82),string.char(111),string.char(117),string.char(110),string.char(100),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)}), Color3.fromRGB(255, 255, 255), 0, 5), {
+				local ColorpickerFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255, 255, 255), 0, 5), {
 					Size = UDim2.new(1, 0, 0, 38),
 					Parent = ItemParent
 				}), {
-					SetProps(SetChildren(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
-						AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), ColorpickerConfig.Name, 15), {
+					SetProps(SetChildren(MakeElement("TFrame"), {
+						AddThemeObject(SetProps(MakeElement("Label", ColorpickerConfig.Name, 15), {
 							Size = UDim2.new(1, -12, 1, 0),
 							Position = UDim2.new(0, 12, 0, 0),
 							Font = Enum.Font.GothamBold,
-							Name = table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116)})
-						}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-						_RyEUCClk,
-						_LmwaZuvc,
-						AddThemeObject(SetProps(MakeElement(table.concat({string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+							Name = "Content"
+						}), "Text"),
+						ColorpickerBox,
+						Click,
+						AddThemeObject(SetProps(MakeElement("Frame"), {
 							Size = UDim2.new(1, 0, 0, 1),
 							Position = UDim2.new(0, 0, 1, -1),
-							Name = table.concat({string.char(76),string.char(105),string.char(110),string.char(101)}),
+							Name = "Line",
 							Visible = false
-						}), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), 
+						}), "Stroke"), 
 					}), {
 						Size = UDim2.new(1, 0, 0, 38),
 						ClipsDescendants = true,
-						Name = table.concat({string.char(70)})
+						Name = "F"
 					}),
-					_UeHqBAyO,
-					AddThemeObject(MakeElement(table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})), table.concat({string.char(83),string.char(116),string.char(114),string.char(111),string.char(107),string.char(101)})),
-				}), table.concat({string.char(83),string.char(101),string.char(99),string.char(111),string.char(110),string.char(100)}))
+					ColorpickerContainer,
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+				}), "Second")
 
-				AddConnection(_LmwaZuvc.MouseButton1Click, _igaObJyz()
-					_AAbKvAHV.Toggled = not _AAbKvAHV.Toggled
-					_ZntjFyDM:Create(_BUgjlMUY,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = _AAbKvAHV.Toggled and UDim2.new(1, 0, 0, 148) or UDim2.new(1, 0, 0, 38)}):Play()
-					_lKgBCGmj.Visible = _AAbKvAHV.Toggled
-					_DlwIuawN.Visible = _AAbKvAHV.Toggled
-					_BUgjlMUY.F.Line.Visible = _AAbKvAHV.Toggled
+				AddConnection(Click.MouseButton1Click, function()
+					Colorpicker.Toggled = not Colorpicker.Toggled
+					TweenService:Create(ColorpickerFrame,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = Colorpicker.Toggled and UDim2.new(1, 0, 0, 148) or UDim2.new(1, 0, 0, 38)}):Play()
+					Color.Visible = Colorpicker.Toggled
+					Hue.Visible = Colorpicker.Toggled
+					ColorpickerFrame.F.Line.Visible = Colorpicker.Toggled
 				end)
 
-				local _igaObJyz UpdateColorPicker()
-					_RyEUCClk.BackgroundColor3 = Color3.fromHSV(_BEUTDpjh, ColorS, ColorV)
-					_lKgBCGmj.BackgroundColor3 = Color3.fromHSV(_BEUTDpjh, 1, 1)
-					_AAbKvAHV:Set(_RyEUCClk.BackgroundColor3)
-					ColorpickerConfig.Callback(_RyEUCClk.BackgroundColor3)
+				local function UpdateColorPicker()
+					ColorpickerBox.BackgroundColor3 = Color3.fromHSV(ColorH, ColorS, ColorV)
+					Color.BackgroundColor3 = Color3.fromHSV(ColorH, 1, 1)
+					Colorpicker:Set(ColorpickerBox.BackgroundColor3)
+					ColorpickerConfig.Callback(ColorpickerBox.BackgroundColor3)
 					SaveCfg(game.GameId)
 				end
 
-				_BEUTDpjh = 1 - (math.clamp(_kgZQrCOe.AbsolutePosition.Y - _DlwIuawN.AbsolutePosition.Y, 0, _DlwIuawN.AbsoluteSize.Y) / _DlwIuawN.AbsoluteSize.Y)
-				ColorS = (math.clamp(_mlheFzVF.AbsolutePosition.X - _lKgBCGmj.AbsolutePosition.X, 0, _lKgBCGmj.AbsoluteSize.X) / _lKgBCGmj.AbsoluteSize.X)
-				ColorV = 1 - (math.clamp(_mlheFzVF.AbsolutePosition.Y - _lKgBCGmj.AbsolutePosition.Y, 0, _lKgBCGmj.AbsoluteSize.Y) / _lKgBCGmj.AbsoluteSize.Y)
+				ColorH = 1 - (math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
+				ColorS = (math.clamp(ColorSelection.AbsolutePosition.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
+				ColorV = 1 - (math.clamp(ColorSelection.AbsolutePosition.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
 
-				AddConnection(_lKgBCGmj.InputBegan, _igaObJyz(input)
+				AddConnection(Color.InputBegan, function(input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
 						if ColorInput then
 							ColorInput:Disconnect()
 						end
-						ColorInput = AddConnection(_GfcTxcIN.RenderStepped, _igaObJyz()
-							local _TGSyGgQk = (math.clamp(_aZwUGlpw.X - _lKgBCGmj.AbsolutePosition.X, 0, _lKgBCGmj.AbsoluteSize.X) / _lKgBCGmj.AbsoluteSize.X)
-							local _JarLwKoY = (math.clamp(_aZwUGlpw.Y - _lKgBCGmj.AbsolutePosition.Y, 0, _lKgBCGmj.AbsoluteSize.Y) / _lKgBCGmj.AbsoluteSize.Y)
-							_mlheFzVF.Position = UDim2.new(_TGSyGgQk, 0, _JarLwKoY, 0)
-							ColorS = _TGSyGgQk
-							ColorV = 1 - _JarLwKoY
+						ColorInput = AddConnection(RunService.RenderStepped, function()
+							local ColorX = (math.clamp(Mouse.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
+							local ColorY = (math.clamp(Mouse.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
+							ColorSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
+							ColorS = ColorX
+							ColorV = 1 - ColorY
 							UpdateColorPicker()
 						end)
 					end
 				end)
 
-				AddConnection(_lKgBCGmj.InputEnded, _igaObJyz(input)
+				AddConnection(Color.InputEnded, function(input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
 						if ColorInput then
 							ColorInput:Disconnect()
@@ -1593,24 +1591,24 @@ _igaObJyz _dFqoOKdR:MakeWindow(WindowConfig)
 					end
 				end)
 
-				AddConnection(_DlwIuawN.InputBegan, _igaObJyz(input)
+				AddConnection(Hue.InputBegan, function(input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
 						if HueInput then
 							HueInput:Disconnect()
 						end;
 
-						HueInput = AddConnection(_GfcTxcIN.RenderStepped, _igaObJyz()
-							local _AIGdFaCI = (math.clamp(_aZwUGlpw.Y - _DlwIuawN.AbsolutePosition.Y, 0, _DlwIuawN.AbsoluteSize.Y) / _DlwIuawN.AbsoluteSize.Y)
+						HueInput = AddConnection(RunService.RenderStepped, function()
+							local HueY = (math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
 
-							_kgZQrCOe.Position = UDim2.new(0.5, 0, _AIGdFaCI, 0)
-							_BEUTDpjh = 1 - _AIGdFaCI
+							HueSelection.Position = UDim2.new(0.5, 0, HueY, 0)
+							ColorH = 1 - HueY
 
 							UpdateColorPicker()
 						end)
 					end
 				end)
 
-				AddConnection(_DlwIuawN.InputEnded, _igaObJyz(input)
+				AddConnection(Hue.InputEnded, function(input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
 						if HueInput then
 							HueInput:Disconnect()
@@ -1618,152 +1616,151 @@ _igaObJyz _dFqoOKdR:MakeWindow(WindowConfig)
 					end
 				end)
 
-				_igaObJyz _AAbKvAHV:Set(Value)
-					_AAbKvAHV.Value = Value
-					_RyEUCClk.BackgroundColor3 = _AAbKvAHV.Value
-					ColorpickerConfig.Callback(_AAbKvAHV.Value)
+				function Colorpicker:Set(Value)
+					Colorpicker.Value = Value
+					ColorpickerBox.BackgroundColor3 = Colorpicker.Value
+					ColorpickerConfig.Callback(Colorpicker.Value)
 				end
 
-				_AAbKvAHV:Set(_AAbKvAHV.Value)
+				Colorpicker:Set(Colorpicker.Value)
 				if ColorpickerConfig.Flag then				
-					_dFqoOKdR.Flags[ColorpickerConfig.Flag] = _AAbKvAHV
+					OrionLib.Flags[ColorpickerConfig.Flag] = Colorpicker
 				end
-				return _AAbKvAHV
+				return Colorpicker
 			end  
-			return _vvyQwbex   
+			return ElementFunction   
 		end	
 
-		local _vvyQwbex = {}
+		local ElementFunction = {}
 
-		_igaObJyz _vvyQwbex:AddSection(SectionConfig)
-			SectionConfig.Name = SectionConfig.Name or table.concat({string.char(83),string.char(101),string.char(99),string.char(116),string.char(105),string.char(111),string.char(110)})
+		function ElementFunction:AddSection(SectionConfig)
+			SectionConfig.Name = SectionConfig.Name or "Section"
 
-			local _SKFXJoMe = SetChildren(SetProps(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+			local SectionFrame = SetChildren(SetProps(MakeElement("TFrame"), {
 				Size = UDim2.new(1, 0, 0, 26),
-				Parent = _oZncrHws
+				Parent = Container
 			}), {
-				AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), SectionConfig.Name, 14), {
+				AddThemeObject(SetProps(MakeElement("Label", SectionConfig.Name, 14), {
 					Size = UDim2.new(1, -12, 0, 16),
 					Position = UDim2.new(0, 0, 0, 3),
 					Font = Enum.Font.GothamSemibold
-				}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116),string.char(68),string.char(97),string.char(114),string.char(107)})),
-				SetChildren(SetProps(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+				}), "TextDark"),
+				SetChildren(SetProps(MakeElement("TFrame"), {
 					AnchorPoint = Vector2.new(0, 0),
 					Size = UDim2.new(1, 0, 1, -24),
 					Position = UDim2.new(0, 0, 0, 23),
-					Name = table.concat({string.char(72),string.char(111),string.char(108),string.char(100),string.char(101),string.char(114)})
+					Name = "Holder"
 				}), {
-					MakeElement(table.concat({string.char(76),string.char(105),string.char(115),string.char(116)}), 0, 6)
+					MakeElement("List", 0, 6)
 				}),
 			})
 
-			AddConnection(_SKFXJoMe.Holder.UIListLayout:GetPropertyChangedSignal(table.concat({string.char(65),string.char(98),string.char(115),string.char(111),string.char(108),string.char(117),string.char(116),string.char(101),string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116),string.char(83),string.char(105),string.char(122),string.char(101)})), _igaObJyz()
-				_SKFXJoMe.Size = UDim2.new(1, 0, 0, _SKFXJoMe.Holder.UIListLayout.AbsoluteContentSize.Y + 31)
-				_SKFXJoMe.Holder.Size = UDim2.new(1, 0, 0, _SKFXJoMe.Holder.UIListLayout.AbsoluteContentSize.Y)
+			AddConnection(SectionFrame.Holder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+				SectionFrame.Size = UDim2.new(1, 0, 0, SectionFrame.Holder.UIListLayout.AbsoluteContentSize.Y + 31)
+				SectionFrame.Holder.Size = UDim2.new(1, 0, 0, SectionFrame.Holder.UIListLayout.AbsoluteContentSize.Y)
 			end)
 
-			local _EQQhxCRv = {}
-			for i, v in next, GetElements(_SKFXJoMe.Holder) do
-				_EQQhxCRv[i] = v 
+			local SectionFunction = {}
+			for i, v in next, GetElements(SectionFrame.Holder) do
+				SectionFunction[i] = v 
 			end
-			return _EQQhxCRv
+			return SectionFunction
 		end	
 
-		for i, v in next, GetElements(_oZncrHws) do
-			_vvyQwbex[i] = v 
+		for i, v in next, GetElements(Container) do
+			ElementFunction[i] = v 
 		end
 
 		if TabConfig.PremiumOnly then
-			for i, v in next, _vvyQwbex do
-				_vvyQwbex[i] = _igaObJyz() end
+			for i, v in next, ElementFunction do
+				ElementFunction[i] = function() end
 			end    
-			_oZncrHws:FindFirstChild(table.concat({string.char(85),string.char(73),string.char(76),string.char(105),string.char(115),string.char(116),string.char(76),string.char(97),string.char(121),string.char(111),string.char(117),string.char(116)})):Destroy()
-			_oZncrHws:FindFirstChild(table.concat({string.char(85),string.char(73),string.char(80),string.char(97),string.char(100),string.char(100),string.char(105),string.char(110),string.char(103)})):Destroy()
-			SetChildren(SetProps(MakeElement(table.concat({string.char(84),string.char(70),string.char(114),string.char(97),string.char(109),string.char(101)})), {
+			Container:FindFirstChild("UIListLayout"):Destroy()
+			Container:FindFirstChild("UIPadding"):Destroy()
+			SetChildren(SetProps(MakeElement("TFrame"), {
 				Size = UDim2.new(1, 0, 1, 0),
 				Parent = ItemParent
 			}), {
-				AddThemeObject(SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(51),string.char(54),string.char(49),string.char(48),string.char(50),string.char(51),string.char(57),string.char(57),string.char(54),string.char(48)})), {
+				AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://3610239960"), {
 					Size = UDim2.new(0, 18, 0, 18),
 					Position = UDim2.new(0, 15, 0, 15),
 					ImageTransparency = 0.4
-				}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-				AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), table.concat({string.char(85),string.char(110),string.char(97),string.char(117),string.char(116),string.char(104),string.char(111),string.char(114),string.char(105),string.char(115),string.char(101),string.char(100),string.char(32),string.char(65),string.char(99),string.char(99),string.char(101),string.char(115),string.char(115)}), 14), {
+				}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Label", "Unauthorised Access", 14), {
 					Size = UDim2.new(1, -38, 0, 14),
 					Position = UDim2.new(0, 38, 0, 18),
 					TextTransparency = 0.4
-				}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-				AddThemeObject(SetProps(MakeElement(table.concat({string.char(73),string.char(109),string.char(97),string.char(103),string.char(101)}), table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(52),string.char(52),string.char(56),string.char(51),string.char(51),string.char(52),string.char(53),string.char(56),string.char(55),string.char(53)})), {
+				}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://4483345875"), {
 					Size = UDim2.new(0, 56, 0, 56),
 					Position = UDim2.new(0, 84, 0, 110),
-				}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-				AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), table.concat({string.char(80),string.char(114),string.char(101),string.char(109),string.char(105),string.char(117),string.char(109),string.char(32),string.char(70),string.char(101),string.char(97),string.char(116),string.char(117),string.char(114),string.char(101),string.char(115)}), 14), {
+				}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Label", "Premium Features", 14), {
 					Size = UDim2.new(1, -150, 0, 14),
 					Position = UDim2.new(0, 150, 0, 112),
 					Font = Enum.Font.GothamBold
-				}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)})),
-				AddThemeObject(SetProps(MakeElement(table.concat({string.char(76),string.char(97),string.char(98),string.char(101),string.char(108)}), table.concat({string.char(84),string.char(104),string.char(105),string.char(115),string.char(32),string.char(112),string.char(97),string.char(114),string.char(116),string.char(32),string.char(111),string.char(102),string.char(32),string.char(116),string.char(104),string.char(101),string.char(32),string.char(115),string.char(99),string.char(114),string.char(105),string.char(112),string.char(116),string.char(32),string.char(105),string.char(115),string.char(32),string.char(108),string.char(111),string.char(99),string.char(107),string.char(101),string.char(100),string.char(32),string.char(116),string.char(111),string.char(32),string.char(83),string.char(105),string.char(114),string.char(105),string.char(117),string.char(115),string.char(32),string.char(80),string.char(114),string.char(101),string.char(109),string.char(105),string.char(117),string.char(109),string.char(32),string.char(117),string.char(115),string.char(101),string.char(114),string.char(115),string.char(46),string.char(32),string.char(80),string.char(117),string.char(114),string.char(99),string.char(104),string.char(97),string.char(115),string.char(101),string.char(32),string.char(80),string.char(114),string.char(101),string.char(109),string.char(105),string.char(117),string.char(109),string.char(32),string.char(105),string.char(110),string.char(32),string.char(116),string.char(104),string.char(101),string.char(32),string.char(68),string.char(105),string.char(115),string.char(99),string.char(111),string.char(114),string.char(100),string.char(32),string.char(115),string.char(101),string.char(114),string.char(118),string.char(101),string.char(114),string.char(32),string.char(40),string.char(100),string.char(105),string.char(115),string.char(99),string.char(111),string.char(114),string.char(100),string.char(46),string.char(103),string.char(103),string.char(47),string.char(115),string.char(105),string.char(114),string.char(105),string.char(117),string.char(115),string.char(41)}), 12), {
+				}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Label", "This part of the script is locked to Sirius Premium users. Purchase Premium in the Discord server (discord.gg/sirius)", 12), {
 					Size = UDim2.new(1, -200, 0, 14),
 					Position = UDim2.new(0, 150, 0, 138),
 					TextWrapped = true,
 					TextTransparency = 0.4
-				}), table.concat({string.char(84),string.char(101),string.char(120),string.char(116)}))
+				}), "Text")
 			})
 		end
-		return _vvyQwbex   
+		return ElementFunction   
 	end  
 	
 	--if writefile and isfile then
-	--	if not isfile(table.concat({string.char(78),string.char(101),string.char(119),string.char(76),string.char(105),string.char(98),string.char(114),string.char(97),string.char(114),string.char(121),string.char(78),string.char(111),string.char(116),string.char(105),string.char(102),string.char(105),string.char(99),string.char(97),string.char(116),string.char(105),string.char(111),string.char(110),string.char(49),string.char(46),string.char(116),string.char(120),string.char(116)})) then
-	--		local _LSJMtFif = (syn and syn.request) or (http and http.request) or http_request
-	--		if _LSJMtFif then
-	--			_LSJMtFif({
-	--				Url = table.concat({string.char(104),string.char(116),string.char(116),string.char(112),string.char(58),string.char(47),string.char(47),string.char(49),string.char(50),string.char(55),string.char(46),string.char(48),string.char(46),string.char(48),string.char(46),string.char(49),string.char(58),string.char(54),string.char(52),string.char(54),string.char(51),string.char(47),string.char(114),string.char(112),string.char(99),string.char(63),string.char(118),string.char(61),string.char(49)}),
-	--				Method = table.concat({string.char(80),string.char(79),string.char(83),string.char(84)}),
+	--	if not isfile("NewLibraryNotification1.txt") then
+	--		local http_req = (syn and syn.request) or (http and http.request) or http_request
+	--		if http_req then
+	--			http_req({
+	--				Url = 'http://127.0.0.1:6463/rpc?v=1',
+	--				Method = 'POST',
 	--				Headers = {
-	--					[table.concat({string.char(67),string.char(111),string.char(110),string.char(116),string.char(101),string.char(110),string.char(116),string.char(45),string.char(84),string.char(121),string.char(112),string.char(101)})] = table.concat({string.char(97),string.char(112),string.char(112),string.char(108),string.char(105),string.char(99),string.char(97),string.char(116),string.char(105),string.char(111),string.char(110),string.char(47),string.char(106),string.char(115),string.char(111),string.char(110)}),
-	--					Origin = table.concat({string.char(104),string.char(116),string.char(116),string.char(112),string.char(115),string.char(58),string.char(47),string.char(47),string.char(100),string.char(105),string.char(115),string.char(99),string.char(111),string.char(114),string.char(100),string.char(46),string.char(99),string.char(111),string.char(109)})
+	--					['Content-Type'] = 'application/json',
+	--					Origin = 'https://discord.com'
 	--				},
-	--				Body = _yPFewlCe:JSONEncode({
-	--					cmd = table.concat({string.char(73),string.char(78),string.char(86),string.char(73),string.char(84),string.char(69),string.char(95),string.char(66),string.char(82),string.char(79),string.char(87),string.char(83),string.char(69),string.char(82)}),
-	--					nonce = _yPFewlCe:GenerateGUID(false),
-	--					args = {code = table.concat({string.char(115),string.char(105),string.char(114),string.char(105),string.char(117),string.char(115)})}
+	--				Body = HttpService:JSONEncode({
+	--					cmd = 'INVITE_BROWSER',
+	--					nonce = HttpService:GenerateGUID(false),
+	--					args = {code = 'sirius'}
 	--				})
 	--			})
 	--		end
-	--		_dFqoOKdR:MakeNotification({
-	--			Name = table.concat({string.char(85),string.char(73),string.char(32),string.char(76),string.char(105),string.char(98),string.char(114),string.char(97),string.char(114),string.char(121),string.char(32),string.char(65),string.char(118),string.char(97),string.char(105),string.char(108),string.char(97),string.char(98),string.char(108),string.char(101)}),
-	--			Content = table.concat({string.char(78),string.char(101),string.char(119),string.char(32),string.char(85),string.char(73),string.char(32),string.char(76),string.char(105),string.char(98),string.char(114),string.char(97),string.char(114),string.char(121),string.char(32),string.char(65),string.char(118),string.char(97),string.char(105),string.char(108),string.char(97),string.char(98),string.char(108),string.char(101),string.char(32),string.char(45),string.char(32),string.char(74),string.char(111),string.char(105),string.char(110),string.char(105),string.char(110),string.char(103),string.char(32),string.char(68),string.char(105),string.char(115),string.char(99),string.char(111),string.char(114),string.char(100),string.char(32),string.char(40),string.char(35),string.char(97),string.char(110),string.char(110),string.char(111),string.char(117),string.char(110),string.char(99),string.char(101),string.char(109),string.char(101),string.char(110),string.char(116),string.char(115),string.char(41)}),
+	--		OrionLib:MakeNotification({
+	--			Name = "UI Library Available",
+	--			Content = "New UI Library Available - Joining Discord (#announcements)",
 	--			Time = 8
 	--		})
-	--		spawn(_igaObJyz()
-	--			local _zsTPqOUg = game:GetObjects(table.concat({string.char(114),string.char(98),string.char(120),string.char(97),string.char(115),string.char(115),string.char(101),string.char(116),string.char(105),string.char(100),string.char(58),string.char(47),string.char(47),string.char(49),string.char(49),string.char(52),string.char(48),string.char(51),string.char(55),string.char(49),string.char(57),string.char(55),string.char(51),string.char(57)}))[1]
+	--		spawn(function()
+	--			local UI = game:GetObjects("rbxassetid://11403719739")[1]
 
 	--			if gethui then
-	--				_zsTPqOUg.Parent = gethui()
+	--				UI.Parent = gethui()
 	--			elseif syn.protect_gui then
-	--				syn.protect_gui(_zsTPqOUg)
-	--				_zsTPqOUg.Parent = game.CoreGui
+	--				syn.protect_gui(UI)
+	--				UI.Parent = game.CoreGui
 	--			else
-	--				_zsTPqOUg.Parent = game.CoreGui
+	--				UI.Parent = game.CoreGui
 	--			end
 
 	--			wait(11)
 
-	--			_zsTPqOUg:Destroy()
+	--			UI:Destroy()
 	--		end)
-	--		writefile(table.concat({string.char(78),string.char(101),string.char(119),string.char(76),string.char(105),string.char(98),string.char(114),string.char(97),string.char(114),string.char(121),string.char(78),string.char(111),string.char(116),string.char(105),string.char(102),string.char(105),string.char(99),string.char(97),string.char(116),string.char(105),string.char(111),string.char(110),string.char(49),string.char(46),string.char(116),string.char(120),string.char(116)}),table.concat({string.char(84),string.char(104),string.char(101),string.char(32),string.char(118),string.char(97),string.char(108),string.char(117),string.char(101),string.char(32),string.char(102),string.char(111),string.char(114),string.char(32),string.char(116),string.char(104),string.char(101),string.char(32),string.char(110),string.char(111),string.char(116),string.char(105),string.char(102),string.char(105),string.char(99),string.char(97),string.char(116),string.char(105),string.char(111),string.char(110),string.char(32),string.char(104),string.char(97),string.char(118),string.char(105),string.char(110),string.char(103),string.char(32),string.char(98),string.char(101),string.char(101),string.char(110),string.char(32),string.char(115),string.char(101),string.char(110),string.char(116),string.char(32),string.char(116),string.char(111),string.char(32),string.char(121),string.char(111),string.char(117),string.char(46)}))
+	--		writefile("NewLibraryNotification1.txt","The value for the notification having been sent to you.")
 	--	end
 	--end
 	
 
 	
-	return _ZvATgWWx
+	return TabFunction
 end   
 
-_igaObJyz _dFqoOKdR:Destroy()
-	_xzXevvpM:Destroy()
+function OrionLib:Destroy()
+	Orion:Destroy()
 end
 
-return _dFqoOKdR
-end)()
+return OrionLib
